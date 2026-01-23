@@ -161,11 +161,20 @@
       background: #f9fafb;
     }
 
-    .footer-inner {
+    $1
+    .footer-logo {
+      margin-top: 1.1rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-logo img {
+      height: 44px;
+      width: auto;
+      max-width: 100%;
+      display: block;
     }
 
     @media (max-width: 900px) {
@@ -251,7 +260,11 @@
         </div>
         <div>
           Funded through the Laura Bush 21st Century Librarian Program.
-        </div>
+        </div>      </div>
+      <div class="footer-logo">
+        <img
+          src="https://raw.githubusercontent.com/Ailiteracy/Ailiteracy.github.io/main/assets/images/imls_logo_2c.jpg"
+          alt="Institute of Museum and Library Services (IMLS) logo">
       </div>
     </footer>
   </div>
