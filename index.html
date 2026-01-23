@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg-page: #f3f4f6;
+      --bg-page: #ffffff;
       --bg-hero: #ffffff;
       --accent: #2563eb;
       --accent-soft: #dbeafe;
@@ -65,12 +65,12 @@
     .brand-main {
       font-weight: 700;
       letter-spacing: 0.08em;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       text-transform: uppercase;
     }
 
     .brand-sub {
-      font-size: 0.8rem;
+      font-size: 0.98rem;
       color: var(--muted);
     }
 
@@ -115,8 +115,10 @@
 
     h1 {
       margin: 0 0 0.8rem;
-      font-size: clamp(2.1rem, 3.3vw, 2.9rem);
-      line-height: 1.08;
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
       color: var(--text-main);
     }
 
@@ -124,7 +126,7 @@
       font-size: 0.98rem;
       color: var(--text-soft);
       max-width: 34rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 0;
     }
 
     .hero-card {
@@ -152,29 +154,6 @@
       font-size: 0.7rem;
       color: var(--muted);
       margin-top: 0.4rem;
-    }
-
-    footer {
-      padding: 1.4rem 0 1.6rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      background: #f9fafb;
-    }
-
-    $1
-    .footer-logo {
-      margin-top: 1.1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .footer-logo img {
-      height: 44px;
-      width: auto;
-      max-width: 100%;
-      display: block;
     }
 
     @media (max-width: 900px) {
@@ -227,8 +206,7 @@
         <div class="container hero-inner">
           <div>
             <h1>
-              Preparing secondary students for AI futures with
-              school librarians in the lead
+              Guiding Students to Understand, Question, and Use AI Responsibly
             </h1>
             <p class="hero-text">
               FLARE AI is a three year collaborative project that co designs an open access AI literacy curriculum
@@ -251,22 +229,6 @@
         </div>
       </section>
     </main>
-
-    <footer>
-      <div class="container footer-inner">
-        <div>
-          FLARE AI – Future Literacy and AI Readiness in Education. School of Information Science,
-          University of South Carolina.
-        </div>
-        <div>
-          Funded through the Laura Bush 21st Century Librarian Program.
-        </div>      </div>
-      <div class="footer-logo">
-        <img
-          src="https://raw.githubusercontent.com/Ailiteracy/Ailiteracy.github.io/main/assets/images/imls_logo_2c.jpg"
-          alt="Institute of Museum and Library Services (IMLS) logo">
-      </div>
-    </footer>
   </div>
 </body>
 </html>
