@@ -144,15 +144,18 @@ nav a:hover, nav a:focus-visible{
 }
 
   /* ===== Project Initiative (centered block, left-aligned text, no box) ===== */
-.project-initiative{
+.project-initiative,
+.what-find{
   padding: 0 0 2.8rem;
 }
-.project-initiative .pi-inner{
-  max-width: 820px;   /* makes the section sit in the middle of the page */
-  margin: 0 auto;     /* centers the block */
-  text-align: left;   /* BUT keeps title and body left-aligned */
+.project-initiative .pi-inner,
+.what-find .wf-inner{
+  max-width: 820px;   /* centers the section block */
+  margin: 0 auto;
+  text-align: left;   /* keeps text left-aligned */
 }
-.project-initiative h2{
+.project-initiative h2,
+.what-find h2{
   margin: 0 0 .9rem;
   color: var(--blue-2); /* same as header links */
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
@@ -164,6 +167,17 @@ nav a:hover, nav a:focus-visible{
   font-size: 1.05rem;
   line-height: 1.75;
 }
+.what-find ul{
+  margin: 0;
+  padding-left: 1.25rem; /* bullet indent */
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.what-find li{
+  margin: .35rem 0;
+}
+
 
 /* ===== Footer (centered without changing logo size) ===== */
 .site-footer{
@@ -276,6 +290,21 @@ nav a:hover, nav a:focus-visible{
         <p>
           The School of Information Science at the University of South Carolina (USC) is leading a national initiative to strengthen artificial intelligence literacy (AIL) education through school libraries. Over three years, the project will create an open-access curriculum and ready-to-implement materials that help secondary school librarians integrate AIL sustainably into their programs. “We place students at the center as sense-makers of these systems—learning how AI works, questioning it, and using it thoughtfully,” the project team emphasizes. By equipping librarians with practical resources, the initiative aims to help students understand, critically evaluate, and responsibly interact with AI in an increasingly AI-driven world.
         </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <section class="what-find" aria-label="What You’ll Find Here">
+    <div class="container">
+      <div class="wf-inner">
+        <h2>What You’ll Find Here</h2>
+        <ul>
+          <li>An open-access, adaptable AI literacy curriculum for secondary school libraries</li>
+          <li>Ready-to-implement lessons and activities designed for library instruction</li>
+          <li>Practical guidance for integrating AI literacy sustainably into library programs</li>
+          <li>Project updates and research insights on AI literacy in school library settings</li>
+        </ul>
       </div>
     </div>
   </section>
