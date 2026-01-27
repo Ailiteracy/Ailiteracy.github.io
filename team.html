@@ -135,110 +135,101 @@ nav a:hover, nav a:focus-visible{
 }
 
 /* ===== Team Grid ===== */
-.team-wrap{
-  padding: 0.2rem 0 3.0rem;
-}
-.section-head{
-  width:min(1120px, 100%);
-  margin: 0 auto 1.2rem;
-  text-align:left; /* left-align title */
-}
-.section-head h2{
-  margin:0;
-  font-size: clamp(1.55rem, 2.2vw, 2.05rem);
-  letter-spacing:-.02em;
-  color: var(--ink);
-}
-
 .team-grid{
-  width:min(1120px, 100%);
-  margin: 1.2rem auto 0;
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
+  margin: 0 auto;
 }
 
+@media (max-width: 980px){
+  .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  .team-grid{ grid-template-columns: 1fr; }
+}
+
+/* ===== Member Card (big image on top) ===== */
 .member-card{
-  border: 1px solid var(--border);
+  border:1px solid var(--border);
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 12px 30px rgba(15,23,42,.06);
   overflow:hidden;
+  background:#fff;
+  box-shadow: 0 12px 30px rgba(15,23,42,.06);
   display:flex;
   flex-direction:column;
+  min-height: 100%;
 }
 
-.member-top{
-  display:flex;
-  gap: 1rem;
-  padding: 1.2rem 1.2rem 0.9rem;
-  align-items:center;
+.member-photo{
+  width:100%;
+  aspect-ratio: 4 / 3;   /* change to 1/1 if you want square */
+  background: #0b1020;
+  overflow:hidden;
 }
 
-.avatar{
-  width: 76px;
-  height: 76px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, rgba(19,87,197,.15), rgba(11,59,141,.08));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight: 900;
-  color: var(--blue-2);
-  letter-spacing:.08em;
-}
-
-.member-meta{
-  min-width:0;
-}
-.member-name{
-  margin:0;
-  font-weight: 900;
-  font-size: 1.12rem;
-  line-height:1.2;
-  color: var(--ink);
-}
-.member-role{
-  margin:.2rem 0 0;
-  color: var(--blue-2);
-  font-weight: 750;
-  font-size: .98rem;
-}
-.member-org{
-  margin:.15rem 0 0;
-  color: var(--muted);
-  font-size: .98rem;
-  line-height:1.35;
+.member-photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit: cover;      /* fills area nicely */
+  object-position: center;
 }
 
 .member-body{
-  padding: 0 1.2rem 1.1rem;
+  padding: 1rem 1rem 1.1rem;
+  display:flex;
+  flex-direction:column;
+  gap: .35rem;
+}
+
+.member-name{
+  margin:0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
   color: var(--ink);
-  line-height:1.7;
-  font-size: 1.0rem;
+}
+
+.member-role{
+  margin:0;
+  font-weight: 700;
+  color: var(--blue-2);
+}
+
+.member-inst{
+  margin:0;
+  color: var(--muted);
+  line-height: 1.35;
 }
 
 .member-links{
-  margin-top:auto;
-  padding: 0.9rem 1.2rem 1.1rem;
-  border-top: 1px solid var(--border);
+  margin-top: .75rem;
   display:flex;
   flex-wrap:wrap;
-  gap: .9rem;
+  gap: .6rem;
 }
+
 .member-links a{
-  color: var(--blue-2);
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.45rem .7rem;
+  border:1px solid var(--border);
+  border-radius: 999px;
   text-decoration:none;
-  font-weight: 750;
+  font-weight:700;
+  color: var(--blue-2);
+  background:#fff;
 }
+
 .member-links a:hover,
 .member-links a:focus-visible{
   outline:none;
   text-decoration:underline;
-  text-underline-offset:6px;
-  text-decoration-thickness:2px;
+  text-underline-offset: 4px;
 }
+
 
 /* ===== Timeline (themed, NOT black) ===== */
 .timeline-wrap{
@@ -451,38 +442,36 @@ nav a:hover, nav a:focus-visible{
     </div>
   </section>
 
-  <!-- Team cards -->
-  <section class="team-wrap" aria-label="Team members">
-    <div class="container">
-      <div class="section-head">
-        <h2>Co-PIs</h2>
-      </div>
+ <!-- Team cards -->
+ <section class="team-wrap" aria-label="Team members">
+   <div class="container">
+     <div class="section-head">
+       <h2>Co-PIs</h2>
+     </div>
 
-      <div class="team-grid">
-        <!-- Member 1 -->
-        <article class="member-card">
-          <div class="member-top">
-            <!-- Swap this for an <img> when you’re ready -->
-            <img class="avatar" src="assets/images/mohammadi.jpg" alt="Mohammadi" />
+     <div class="team-grid">
+       <!-- Member 1 -->
+       <article class="member-card">
+         <div class="member-photo">
+           <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
+         </div>
 
-            <div class="member-meta">
-              <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
-              <div class="member-role">Associate Professor</div>
-              <div class="member-org">University of South Carolina</div>
-            </div>
-          </div>
+         <div class="member-body">
+           <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
+           <p class="member-role">Associate Professor</p>
+           <p class="member-inst">University of South Carolina</p>
+ 
+           <p>
+             Works in AI, big data, and computational methods for information professionals. Leads the project’s AI
+             content to keep concepts accurate, current, and clear for school librarians.
+           </p>
 
-          <div class="member-body">
-            AI, big data, and computational methods researcher focused on building AI understanding for information
-            professionals. Leads the project’s AI content to ensure concepts are accurate, current, and accessible for
-            school librarians. Supports dissemination through publications and open-access curriculum release.
-          </div>
-
-          <div class="member-links" aria-label="Member links">
-            <a href="https://sites.google.com/view/ehsan-mohammadi/welcome" target="_blank" rel="noopener">Website</a>
-            <a href="#" target="_blank" rel="noopener">Email</a>
-          </div>
-        </article>
+           <div class="member-links" aria-label="Member links">
+             <a href="https://sites.google.com/view/ehsan-mohammadi/welcome" target="_blank" rel="noopener">Website</a>
+             <a href="mailto:EHSAN2@sc.edu">Email</a>
+           </div>
+         </div>
+       </article>
 
         <!-- Member 2 -->
         <article class="member-card">
