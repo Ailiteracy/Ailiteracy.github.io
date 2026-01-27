@@ -33,7 +33,7 @@ body{
   margin:0 auto;
 }
 
-/* ===== Header (lowered more) ===== */
+/* ===== Header ===== */
 header{
   background:#fff;
   border-bottom:none;
@@ -50,7 +50,6 @@ header{
 .brand-main{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:1.1rem}
 .brand-sub{color:var(--muted);font-size:.95rem}
 
-/* Bold nav links (no bubbles) */
 nav{
   display:flex;
   flex-wrap:wrap;
@@ -72,9 +71,9 @@ nav a:hover, nav a:focus-visible{
   text-decoration-thickness:2px;
 }
 
-/* ===== Hero wrapper ===== */
+/* ===== Hero ===== */
 .hero-wrap{
-  padding: 2.6rem 0 2.8rem;
+  padding: 2.6rem 0 2.2rem;
 }
 .hero-card{
   border-radius: 1.35rem;
@@ -83,8 +82,6 @@ nav a:hover, nav a:focus-visible{
   background:#fff;
   box-shadow: 0 18px 45px rgba(15,23,42,.08);
 }
-
-/* ===== Split hero ===== */
 .split-hero{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -99,7 +96,6 @@ nav a:hover, nav a:focus-visible{
   padding: clamp(2.0rem, 3.4vw, 3.6rem);
   overflow:hidden;
 }
-/* Wavy background via embedded SVG */
 .split-left::before{
   content:"";
   position:absolute; inset:-1px;
@@ -116,10 +112,7 @@ nav a:hover, nav a:focus-visible{
     radial-gradient(900px 420px at 30% 80%, rgba(255,255,255,.08), transparent 60%);
   pointer-events:none;
 }
-.split-content{
-  position:relative;
-  max-width: 600px;
-}
+.split-content{position:relative; max-width: 600px;}
 .split-content h1{
   margin:0 0 1.2rem;
   font-size: clamp(2.1rem, 3.35vw, 3.15rem);
@@ -133,8 +126,6 @@ nav a:hover, nav a:focus-visible{
   color: rgba(255,255,255,.90);
   max-width: 58ch;
 }
-
-/* Full-bleed right image */
 .split-right{ position:relative; background:#0b1020; }
 .split-right img{
   width:100%;
@@ -143,43 +134,114 @@ nav a:hover, nav a:focus-visible{
   object-fit:cover;
 }
 
-  /* ===== Project Initiative (centered block, left-aligned text, no box) ===== */
-.project-initiative,
-.what-find{
+/* ===== Timeline (themed, NOT black) ===== */
+.timeline-wrap{
   padding: 0 0 2.8rem;
 }
-.project-initiative .pi-inner,
-.what-find .wf-inner{
-  max-width: 820px;   /* centers the section block */
+.timeline{
+  width: min(900px, 100%);
   margin: 0 auto;
-  text-align: left;   /* keeps text left-aligned */
+  position: relative;
 }
-.project-initiative h2,
-.what-find h2{
-  margin: 0 0 .9rem;
-  color: var(--blue-2); /* same as header links */
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  letter-spacing: -.01em;
+.timeline ul{
+  list-style:none;
+  padding:0;
+  margin:0;
 }
-.project-initiative p{
-  margin: 0;
-  color: var(--ink);
-  font-size: 1.05rem;
-  line-height: 1.75;
-}
-.what-find ul{
-  margin: 0;
-  padding-left: 1.25rem; /* bullet indent */
-  color: var(--ink);
-  font-size: 1.05rem;
-  line-height: 1.75;
-}
-.what-find li{
-  margin: .35rem 0;
+/* clearfix for floated items on desktop */
+.timeline ul::after{
+  content:"";
+  display:block;
+  clear:both;
 }
 
+.timeline ul li{
+  padding: 20px;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 30px rgba(15,23,42,.06);
+}
+.timeline ul li:last-child{ margin-bottom: 0; }
 
-/* ===== Footer (centered without changing logo size) ===== */
+.timeline-content .date{
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.timeline-content h1{
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: var(--blue-2); /* match your theme blue */
+}
+.timeline-content p{
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+@media only screen and (min-width: 768px){
+  .timeline:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:2px;
+    height:100%;
+    background-color: var(--border); /* was gray */
+  }
+  .timeline ul li{
+    width:50%;
+    position:relative;
+    margin-bottom:50px;
+  }
+  .timeline ul li:nth-child(odd){
+    float:left;
+    clear:right;
+    transform:translateX(-30px);
+    border-radius: 20px 0px 20px 20px;
+  }
+  .timeline ul li:nth-child(even){
+    float:right;
+    clear:left;
+    transform:translateX(30px);
+    border-radius: 0px 20px 20px 20px;
+  }
+  .timeline ul li::before{
+    content:"";
+    position:absolute;
+    height:18px;
+    width:18px;
+    border-radius:50%;
+    background-color: var(--blue-2); /* theme dot */
+    top:0px;
+  }
+  .timeline ul li:nth-child(odd)::before{
+    transform:translate(50%, -50%);
+    right:-30px;
+  }
+  .timeline ul li:nth-child(even)::before{
+    transform:translate(-50%, -50%);
+    left:-30px;
+  }
+  .timeline-content .date{
+    position:absolute;
+    top:-30px;
+  }
+  .timeline ul li:hover::before{
+    background-color: var(--blue); /* theme hover */
+  }
+}
+
+/* ===== Footer ===== */
 .site-footer{
   margin-top: 2.4rem;
   padding: 1.8rem 0 2.2rem;
@@ -190,23 +252,21 @@ nav a:hover, nav a:focus-visible{
   margin: 0 auto;
   border-top: 1px solid var(--border);
   padding-top: 1.3rem;
-
   display:flex;
-  justify-content: center;   /* centers the whole footer content */
+  justify-content: center;
 }
 .footer-funding{
   display:flex;
   align-items:center;
-  justify-content: center;   /* centers logo + text together */
+  justify-content: center;
   gap: 1.35rem;
   color:#334155;
   font-size: 1.08rem;
   line-height: 1.35;
   text-align:left;
 }
-/* KEEP logo size the same (adjust if you want) */
 .footer-funding img{
-  height: 112px;   /* <-- your chosen logo size */
+  height: 112px;
   width: auto;
   display:block;
   object-fit:contain;
@@ -229,7 +289,7 @@ nav a:hover, nav a:focus-visible{
   .container{width:min(100% - 1.8rem,100%);}
   .hero-container{width:min(100% - .9rem,100%);}
   header{padding-top: 1.4rem;}
-  .hero-wrap{padding:2.0rem 0 2.0rem;}
+  .hero-wrap{padding:2.0rem 0 1.8rem;}
 }
 </style>
 </head>
@@ -246,10 +306,6 @@ nav a:hover, nav a:focus-visible{
       <a href="about.html">About</a>
       <a href="milestones.html">Project Milestones</a>
       <a href="team.html">Team</a>
-      
-<!--  <a href="#">Advisory board</a>
-      <a href="#">Resources</a> -->
-     
       <a href="Getinvolved.html">Get Involved</a>
     </nav>
   </div>
@@ -262,7 +318,7 @@ nav a:hover, nav a:focus-visible{
         <div class="split-hero" aria-label="Homepage hero">
           <div class="split-left">
             <div class="split-content">
-              <h1>Projecct Milestones</h1>
+              <h1>Project Milestones</h1>
               <p>
                 Our milestones track how this project moves from listening to librarians to building, testing, and sharing an
                 AI literacy curriculum designed for secondary school libraries. Through national surveys, focus groups, and
@@ -273,20 +329,58 @@ nav a:hover, nav a:focus-visible{
           </div>
 
           <div class="split-right" aria-label="Hero image">
-            <img
-              src="assets/images/about.jpg"
-              alt="Students and AI working together" />
+            <img src="assets/images/about.jpg" alt="Students and AI working together" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- TIMELINE (themed) -->
+  <section class="timeline-wrap" aria-label="Milestones timeline">
+    <div class="container">
+      <div class="timeline">
+        <ul>
+          <li>
+            <div class="timeline-content">
+              <h3 class="date">20th May, 2010</h3>
+              <h1>Heading 1</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="timeline-content">
+              <h3 class="date">20th May, 2010</h3>
+              <h1>Heading 2</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="timeline-content">
+              <h3 class="date">20th May, 2010</h3>
+              <h1>Heading 3</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+            </div>
+          </li>
+
+          <li>
+            <div class="timeline-content">
+              <h3 class="date">20th May, 2010</h3>
+              <h1>Heading 4</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora ab laudantium voluptatibus aut eos placeat laborum, quibusdam exercitationem labore.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-funding">
-      <!-- Put the logo in your repo at: assets/imls_logo_2c.jpg -->
       <img src="assets/images/imls_logo_2c.jpg" alt="Institute of Museum and Library Services (IMLS) logo">
       <div>Funded through the Laura Bush 21st Century Librarian Program</div>
     </div>
@@ -295,4 +389,3 @@ nav a:hover, nav a:focus-visible{
 
 </body>
 </html>
-
