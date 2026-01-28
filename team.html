@@ -136,20 +136,20 @@ nav a:hover, nav a:focus-visible{
 
 /* ===== Team Grid ===== */
 .team-wrap{ padding: 1.2rem 0 2.8rem; }
-
 .section-head h2{
   margin: 0 0 1rem;
   font-size: 1.35rem;
   letter-spacing: -.01em;
 }
 
-/* UPDATED: narrower cards + centered, with responsive grid */
+/* UPDATED: Left-aligned grid, cards not "far apart", no row-stretch */
 .team-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin: 0 auto;
-  justify-items: center; /* center each card */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  gap: 1rem;              /* tighter spacing */
+  justify-content: start; /* left-align the grid under the title */
+  align-items: start;     /* prevent row stretching */
+  margin: 0;
 }
 
 /* ===== Member Card (Option B: compact + expandable "More") ===== */
@@ -162,22 +162,18 @@ nav a:hover, nav a:focus-visible{
   display:flex;
   flex-direction:column;
 
-  width: 100%;
-  max-width: 320px; /* UPDATED: card max width */
+  width:100%;
+  max-width:320px;  /* narrower card */
+  align-self:start; /* prevents “other card expands” look */
 }
 
-/* UPDATED: taller image area */
+/* Taller image area so you can see the photo better */
 .member-photo{
   width:100%;
-  height: 260px; /* UPDATED: make image taller */
+  height: 280px; /* taller image */
   background:#0b1020;
   overflow:hidden;
 }
-@media (max-width: 640px){
-  .member-card{ max-width: 420px; }
-  .member-photo{ height: 320px; }
-}
-
 .member-photo img{
   width:100%;
   height:100%;
@@ -192,8 +188,6 @@ nav a:hover, nav a:focus-visible{
   flex-direction:column;
   gap: .25rem;
 }
-
-/* Reset default <p> margins so card stays compact */
 .member-body p{ margin:0; }
 
 .member-name{
@@ -219,7 +213,6 @@ nav a:hover, nav a:focus-visible{
   border-top: 1px solid var(--border);
   padding-top: .6rem;
 }
-
 .member-more summary{
   cursor:pointer;
   color: var(--blue-2);
@@ -231,14 +224,11 @@ nav a:hover, nav a:focus-visible{
   gap:.5rem;
 }
 .member-more summary::-webkit-details-marker{ display:none; }
-
 .member-more summary:focus-visible{
   outline: 2px solid rgba(19,87,197,.35);
   outline-offset: 3px;
   border-radius: 8px;
 }
-
-/* Small chevron indicator */
 .member-more summary::after{
   content:"▾";
   font-size: 1rem;
@@ -249,7 +239,6 @@ nav a:hover, nav a:focus-visible{
 .member-more[open] summary::after{
   transform: rotate(180deg);
 }
-
 .member-bio{
   margin:.55rem 0 0;
   color: var(--muted);
@@ -257,7 +246,7 @@ nav a:hover, nav a:focus-visible{
   line-height:1.5;
 }
 
-/* Links inside the expanded area */
+/* Links inside expanded area */
 .member-links{
   margin-top: .65rem;
   display:flex;
@@ -333,6 +322,11 @@ nav a:hover, nav a:focus-visible{
   .hero-container{width:min(100% - .9rem,100%);}
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 1.8rem;}
+
+  /* On mobile: stack cards and use full width */
+  .team-grid{ grid-template-columns: 1fr; }
+  .member-card{ max-width: 100%; }
+  .member-photo{ height: 340px; }
 }
 </style>
 </head>
@@ -414,7 +408,7 @@ nav a:hover, nav a:focus-visible{
           </div>
         </article>
 
-        <!-- TEST CARD 2 (optional — helps you see the “only one open” behavior) -->
+        <!-- TEST CARD 2 -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/mohammadi.jpg" alt="Example Member" />
@@ -429,7 +423,7 @@ nav a:hover, nav a:focus-visible{
               <summary>More</summary>
 
               <p class="member-bio">
-                Example bio text. Add a few sentences here. When you open this card, the other one will close automatically.
+                Example bio text. When you open this card, the other one will close automatically.
               </p>
 
               <div class="member-links" aria-label="Member links">
@@ -457,24 +451,24 @@ nav a:hover, nav a:focus-visible{
 <!-- JS: only one “More” open at a time + scroll opened card into view -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const detailsList = Array.from(document.querySelectorAll(".member-more"));
+    const detailsList = [...document.querySelectorAll(".member-more")];
 
     detailsList.forEach((d) => {
       d.addEventListener("toggle", () => {
-        // When one opens, close all others
-        if (d.open) {
-          detailsList.forEach((other) => {
-            if (other !== d) other.removeAttribute("open");
-          });
+        // only act when opening
+        if (!d.open) return;
 
-          // Scroll the card into view (nice on mobile)
-          const card = d.closest(".member-card");
-          if (card) {
-            // small delay lets the details expand first
-            setTimeout(() => {
-              card.scrollIntoView({ behavior: "smooth", block: "nearest" });
-            }, 60);
-          }
+        // close all other details
+        detailsList.forEach((other) => {
+          if (other !== d) other.open = false;
+        });
+
+        // scroll opened card into view
+        const card = d.closest(".member-card");
+        if (card) {
+          setTimeout(() => {
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 60);
         }
       });
     });
