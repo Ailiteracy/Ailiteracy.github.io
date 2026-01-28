@@ -135,24 +135,29 @@ nav a:hover, nav a:focus-visible{
 }
 
 /* ===== Team Grid ===== */
-.team-wrap{ padding: 1.2rem 0 2.8rem; }
+.team-wrap{ padding: 1.2rem 0 2.2rem; }
 .section-head h2{
   margin: 0 0 1rem;
   font-size: 1.35rem;
   letter-spacing: -.01em;
 }
 
-/* UPDATED: Left-aligned grid, cards not "far apart", no row-stretch */
+/* Left-aligned grid */
 .team-grid{
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
-  gap: 1rem;              /* tighter spacing */
-  justify-content: start; /* left-align the grid under the title */
-  align-items: start;     /* prevent row stretching */
+  gap: 1rem;
+  justify-content: start;
+  align-items: start;
   margin: 0;
 }
 
-/* ===== Member Card (Option B: compact + expandable "More") ===== */
+/* NEW: narrower grid for Research Assistants */
+.team-grid--narrow{
+  grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
+}
+
+/* ===== Member Card ===== */
 .member-card{
   border:1px solid var(--border);
   border-radius: 14px;
@@ -163,14 +168,19 @@ nav a:hover, nav a:focus-visible{
   flex-direction:column;
 
   width:100%;
-  max-width:320px;  /* narrower card */
-  align-self:start; /* prevents “other card expands” look */
+  max-width:320px;
+  align-self:start;
 }
 
-/* Taller image area so you can see the photo better */
+/* When using the narrow grid, cap card width smaller too */
+.team-grid--narrow .member-card{
+  max-width: 280px;
+}
+
+/* Taller image area */
 .member-photo{
   width:100%;
-  height: 280px; /* taller image */
+  height: 280px;
   background:#0b1020;
   overflow:hidden;
 }
@@ -323,9 +333,9 @@ nav a:hover, nav a:focus-visible{
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 1.8rem;}
 
-  /* On mobile: stack cards and use full width */
   .team-grid{ grid-template-columns: 1fr; }
   .member-card{ max-width: 100%; }
+  .team-grid--narrow .member-card{ max-width: 100%; }
   .member-photo{ height: 340px; }
 }
 </style>
@@ -373,8 +383,8 @@ nav a:hover, nav a:focus-visible{
     </div>
   </section>
 
-  <!-- Team cards -->
-  <section class="team-wrap" aria-label="Team members">
+  <!-- Co-PIs -->
+  <section class="team-wrap" aria-label="Co-PIs">
     <div class="container">
       <div class="section-head">
         <h2>Co-PIs</h2>
@@ -433,42 +443,41 @@ nav a:hover, nav a:focus-visible{
             </details>
           </div>
         </article>
-        
-<section class="team-wrap" aria-label="Team members">
+      </div><!-- ✅ CLOSE Co-PI grid -->
+    </div><!-- ✅ CLOSE container -->
+  </section><!-- ✅ CLOSE Co-PI section -->
+
+  <!-- Research Assistants (now correctly underneath) -->
+  <section class="team-wrap" aria-label="Research Assistants">
     <div class="container">
       <div class="section-head">
         <h2>Research Assistants</h2>
       </div>
 
-
-      <div class="team-grid">
+      <div class="team-grid team-grid--narrow">
         <!-- MEMBER CARD 3 -->
         <article class="member-card">
           <div class="member-photo">
-            <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
+            <img src="assets/images/mohammadi.jpg" alt="Research Assistant Name" />
           </div>
 
           <div class="member-body">
-            <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
-            <p class="member-role">Associate Professor</p>
+            <h3 class="member-name">Research Assistant Name</h3>
+            <p class="member-role">Research Assistant</p>
             <p class="member-inst">University of South Carolina</p>
 
             <details class="member-more">
               <summary>More</summary>
-
               <p class="member-bio">
-                Works in AI, big data, and computational methods for information professionals. Leads the project’s AI
-                content to keep concepts accurate, current, and clear for school librarians.
+                Add RA bio details here.
               </p>
-
               <div class="member-links" aria-label="Member links">
-                <a href="https://sites.google.com/view/ehsan-mohammadi/welcome" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:EHSAN2@sc.edu">Email</a>
+                <a href="#" target="_blank" rel="noopener">Website</a>
+                <a href="mailto:ra@example.com">Email</a>
               </div>
             </details>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -490,15 +499,12 @@ nav a:hover, nav a:focus-visible{
 
     detailsList.forEach((d) => {
       d.addEventListener("toggle", () => {
-        // only act when opening
         if (!d.open) return;
 
-        // close all other details
         detailsList.forEach((other) => {
           if (other !== d) other.open = false;
         });
 
-        // scroll opened card into view
         const card = d.closest(".member-card");
         if (card) {
           setTimeout(() => {
