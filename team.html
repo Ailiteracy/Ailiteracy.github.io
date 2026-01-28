@@ -135,13 +135,20 @@ nav a:hover, nav a:focus-visible{
 }
 
 /* ===== Team Grid ===== */
+.team-wrap{ padding: 1.2rem 0 2.8rem; }
+
+.section-head h2{
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  letter-spacing: -.01em;
+}
+
 .team-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   margin: 0 auto;
 }
-
 @media (max-width: 980px){
   .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -149,198 +156,131 @@ nav a:hover, nav a:focus-visible{
   .team-grid{ grid-template-columns: 1fr; }
 }
 
-/* ===== Member Card (big image on top) ===== */
+/* ===== Member Card (Option B: compact + expandable "More") ===== */
 .member-card{
   border:1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 14px;
   overflow:hidden;
   background:#fff;
-  box-shadow: 0 12px 30px rgba(15,23,42,.06);
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
   display:flex;
   flex-direction:column;
-  min-height: 100%;
 }
 
+/* Keep photo compact */
 .member-photo{
   width:100%;
-  aspect-ratio: 4 / 3;   /* change to 1/1 if you want square */
-  background: #0b1020;
+  height: 180px; /* adjust 160–220px to taste */
+  background:#0b1020;
   overflow:hidden;
 }
-
+@media (max-width: 640px){
+  .member-photo{ height: 220px; }
+}
 .member-photo img{
   width:100%;
   height:100%;
   display:block;
-  object-fit: cover;      /* fills area nicely */
+  object-fit: cover;
   object-position: center;
 }
 
 .member-body{
-  padding: 1rem 1rem 1.1rem;
+  padding: .85rem .95rem 1rem;
   display:flex;
   flex-direction:column;
-  gap: .35rem;
+  gap: .25rem;
 }
+
+/* Reset default <p> margins so card stays compact */
+.member-body p{ margin:0; }
 
 .member-name{
   margin:0;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 850;
   letter-spacing: -.01em;
-  color: var(--ink);
 }
-
 .member-role{
-  margin:0;
   font-weight: 700;
   color: var(--blue-2);
+  font-size: .95rem;
 }
-
 .member-inst{
-  margin:0;
   color: var(--muted);
-  line-height: 1.35;
+  font-size: .95rem;
+  line-height: 1.25;
 }
 
+/* Expandable details */
+.member-more{
+  margin-top: .45rem;
+  border-top: 1px solid var(--border);
+  padding-top: .6rem;
+}
+
+.member-more summary{
+  cursor:pointer;
+  color: var(--blue-2);
+  font-weight: 800;
+  font-size: .95rem;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+.member-more summary::-webkit-details-marker{ display:none; }
+
+.member-more summary:focus-visible{
+  outline: 2px solid rgba(19,87,197,.35);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Small chevron indicator */
+.member-more summary::after{
+  content:"▾";
+  font-size: 1rem;
+  line-height: 1;
+  transform-origin: center;
+  transition: transform .18s ease;
+}
+.member-more[open] summary::after{
+  transform: rotate(180deg);
+}
+
+.member-bio{
+  margin:.55rem 0 0;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height:1.5;
+}
+
+/* Links inside the expanded area */
 .member-links{
-  margin-top: .75rem;
+  margin-top: .65rem;
   display:flex;
   flex-wrap:wrap;
-  gap: .6rem;
+  gap: .5rem;
 }
-
 .member-links a{
   display:inline-flex;
   align-items:center;
   gap:.35rem;
-  padding:.45rem .7rem;
+  padding:.35rem .6rem;
   border:1px solid var(--border);
   border-radius: 999px;
   text-decoration:none;
-  font-weight:700;
+  font-weight:750;
+  font-size: .92rem;
   color: var(--blue-2);
   background:#fff;
 }
-
 .member-links a:hover,
 .member-links a:focus-visible{
   outline:none;
   text-decoration:underline;
   text-underline-offset: 4px;
-}
-
-
-/* ===== Timeline (themed, NOT black) ===== */
-.timeline-wrap{
-  padding: 2.6rem 0 2.8rem; /* top, right/left, bottom */
-}
-.timeline{
-  width: min(900px, 100%);
-  margin: 0 auto;
-  position: relative;
-}
-.timeline ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-/* clearfix for floated items on desktop */
-.timeline ul::after{
-  content:"";
-  display:block;
-  clear:both;
-}
-
-.timeline ul li{
-  padding: 20px;
-  background: #fff;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 12px 30px rgba(15,23,42,.06);
-}
-.timeline ul li:last-child{ margin-bottom: 0; }
-
-.timeline-content .date{
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  color: var(--muted);
-}
-.timeline-content h1{
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 1.25;
-  margin-bottom: 10px;
-  color: var(--blue-2); /* match your theme blue */
-}
-.timeline-content p{
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: 400;
-  color: var(--ink);
-}
-
-@media only screen and (min-width: 768px){
-  .timeline:before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:2px;
-    height:100%;
-    background-color: var(--border); /* was gray */
-  }
-  .timeline ul li{
-    width:50%;
-    position:relative;
-    margin-bottom:50px;
-  }
-  .timeline ul li:nth-child(odd){
-    float:left;
-    clear:right;
-    transform:translateX(-30px);
-    border-radius: 20px 0px 20px 20px;
-  }
-  .timeline ul li:nth-child(even){
-    float:right;
-    clear:left;
-    transform:translateX(30px);
-    border-radius: 0px 20px 20px 20px;
-  }
-  .timeline ul li::before{
-    content:"";
-    position:absolute;
-    height:18px;
-    width:18px;
-    border-radius:50%;
-    background-color: var(--blue-2); /* theme dot */
-    top:0px;
-  }
-  .timeline ul li:nth-child(odd)::before{
-    transform:translate(50%, -50%);
-    right:-30px;
-  }
-  .timeline ul li:nth-child(even)::before{
-    transform:translate(-50%, -50%);
-    left:-30px;
-  }
-  .timeline-content .date{
-    position:absolute;
-    top:-30px;
-  }
-  .timeline ul li:hover::before{
-    background-color: var(--blue); /* theme hover */
-  }
-}
-
-/* Responsive */
-@media (max-width: 980px){
-  .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ===== Footer ===== */
@@ -392,10 +332,6 @@ nav a:hover, nav a:focus-visible{
   .hero-container{width:min(100% - .9rem,100%);}
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 1.8rem;}
-  .team-grid{ grid-template-columns: 1fr; }
-  .member-top{ padding: 1.05rem 1.05rem 0.85rem; }
-  .member-body{ padding: 0 1.05rem 1.0rem; }
-  .member-links{ padding: 0.85rem 1.05rem 1.0rem; }
 }
 </style>
 </head>
@@ -442,143 +378,67 @@ nav a:hover, nav a:focus-visible{
     </div>
   </section>
 
- <!-- Team cards -->
- <section class="team-wrap" aria-label="Team members">
-   <div class="container">
-     <div class="section-head">
-       <h2>Co-PIs</h2>
-     </div>
+  <!-- Team cards -->
+  <section class="team-wrap" aria-label="Team members">
+    <div class="container">
+      <div class="section-head">
+        <h2>Co-PIs</h2>
+      </div>
 
-     <div class="team-grid">
-       <!-- Member 1 -->
-       <article class="member-card">
-         <div class="member-photo">
-           <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
-         </div>
-
-         <div class="member-body">
-           <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
-           <p class="member-role">Associate Professor</p>
-           <p class="member-inst">University of South Carolina</p>
- 
-           <p>
-             Works in AI, big data, and computational methods for information professionals. Leads the project’s AI
-             content to keep concepts accurate, current, and clear for school librarians.
-           </p>
-
-           <div class="member-links" aria-label="Member links">
-             <a href="https://sites.google.com/view/ehsan-mohammadi/welcome" target="_blank" rel="noopener">Website</a>
-             <a href="mailto:EHSAN2@sc.edu">Email</a>
-           </div>
-         </div>
-       </article>
-
-        <!-- Member 2 -->
+      <div class="team-grid">
+        <!-- TEST CARD 1 -->
         <article class="member-card">
-          <div class="member-top">
-            <div class="avatar" aria-hidden="true">CD</div>
-
-            <div class="member-meta">
-              <h3 class="member-name">Name Here</h3>
-              <div class="member-role">Role / Title</div>
-              <div class="member-org">Institution / Organization</div>
-            </div>
+          <div class="member-photo">
+            <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
           </div>
 
           <div class="member-body">
-            Short bio goes here. Mention librarianship, curriculum design, AI literacy, research, evaluation, etc.
-          </div>
+            <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
+            <p class="member-role">Associate Professor</p>
+            <p class="member-inst">University of South Carolina</p>
 
-          <div class="member-links" aria-label="Member links">
-            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#" target="_blank" rel="noopener">Publications</a>
+            <details class="member-more">
+              <summary>More</summary>
+
+              <p class="member-bio">
+                Works in AI, big data, and computational methods for information professionals. Leads the project’s AI
+                content to keep concepts accurate, current, and clear for school librarians.
+              </p>
+
+              <div class="member-links" aria-label="Member links">
+                <a href="https://sites.google.com/view/ehsan-mohammadi/welcome" target="_blank" rel="noopener">Website</a>
+                <a href="mailto:EHSAN2@sc.edu">Email</a>
+              </div>
+            </details>
           </div>
         </article>
 
-        <!-- Member 3 -->
+        <!-- TEST CARD 2 (optional — helps you see the “only one open” behavior) -->
         <article class="member-card">
-          <div class="member-top">
-            <div class="avatar" aria-hidden="true">EF</div>
-
-            <div class="member-meta">
-              <h3 class="member-name">Name Here</h3>
-              <div class="member-role">Role / Title</div>
-              <div class="member-org">Institution / Organization</div>
-            </div>
+          <div class="member-photo">
+            <img src="assets/images/mohammadi.jpg" alt="Example Member" />
           </div>
 
           <div class="member-body">
-            Short bio goes here. Focus on what they bring to the initiative and how it supports secondary school libraries.
-          </div>
+            <h3 class="member-name">Example Member</h3>
+            <p class="member-role">Role / Title</p>
+            <p class="member-inst">Institution</p>
 
-          <div class="member-links" aria-label="Member links">
-            <a href="#" target="_blank" rel="noopener">Profile</a>
-          </div>
-        </article>
+            <details class="member-more">
+              <summary>More</summary>
 
-        <!-- Member 4 -->
-        <article class="member-card">
-          <div class="member-top">
-            <div class="avatar" aria-hidden="true">GH</div>
+              <p class="member-bio">
+                Example bio text. Add a few sentences here. When you open this card, the other one will close automatically.
+              </p>
 
-            <div class="member-meta">
-              <h3 class="member-name">Name Here</h3>
-              <div class="member-role">Role / Title</div>
-              <div class="member-org">Institution / Organization</div>
-            </div>
-          </div>
-
-          <div class="member-body">
-            Short bio goes here. Add a note about what workstream they support (co-design, PD, research, outreach, etc.).
-          </div>
-
-          <div class="member-links" aria-label="Member links">
-            <a href="#" target="_blank" rel="noopener">Website</a>
-            <a href="#" target="_blank" rel="noopener">Email</a>
+              <div class="member-links" aria-label="Member links">
+                <a href="#" target="_blank" rel="noopener">Website</a>
+                <a href="mailto:example@example.com">Email</a>
+              </div>
+            </details>
           </div>
         </article>
 
-        <!-- Member 5 -->
-        <article class="member-card">
-          <div class="member-top">
-            <div class="avatar" aria-hidden="true">IJ</div>
-
-            <div class="member-meta">
-              <h3 class="member-name">Name Here</h3>
-              <div class="member-role">Role / Title</div>
-              <div class="member-org">Institution / Organization</div>
-            </div>
-          </div>
-
-          <div class="member-body">
-            Short bio goes here. Keep it consistent in length so the grid feels balanced.
-          </div>
-
-          <div class="member-links" aria-label="Member links">
-            <a href="#" target="_blank" rel="noopener">Profile</a>
-          </div>
-        </article>
-
-        <!-- Member 6 -->
-        <article class="member-card">
-          <div class="member-top">
-            <div class="avatar" aria-hidden="true">KL</div>
-
-            <div class="member-meta">
-              <h3 class="member-name">Name Here</h3>
-              <div class="member-role">Role / Title</div>
-              <div class="member-org">Institution / Organization</div>
-            </div>
-          </div>
-
-          <div class="member-body">
-            Short bio goes here. Mention evaluation, dissemination, implementation, or partnerships as relevant.
-          </div>
-
-          <div class="member-links" aria-label="Member links">
-            <a href="#" target="_blank" rel="noopener">Website</a>
-          </div>
-        </article>
       </div>
     </div>
   </section>
@@ -592,6 +452,34 @@ nav a:hover, nav a:focus-visible{
     </div>
   </div>
 </footer>
+
+<!-- JS: only one “More” open at a time + scroll opened card into view -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const detailsList = Array.from(document.querySelectorAll(".member-more"));
+
+    detailsList.forEach((d) => {
+      d.addEventListener("toggle", () => {
+        // When one opens, close all others
+        if (d.open) {
+          detailsList.forEach((other) => {
+            if (other !== d) other.removeAttribute("open");
+          });
+
+          // Scroll the card into view (nice on mobile)
+          const card = d.closest(".member-card");
+          if (card) {
+            // small delay lets the details expand first
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }, 60);
+          }
+        }
+        // If user clicks again, it closes naturally (default <details> behavior)
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
