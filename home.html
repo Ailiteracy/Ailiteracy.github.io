@@ -179,8 +179,8 @@ nav a:hover, nav a:focus-visible{
   text-align:left;
 }
 /* KEEP logo size the same (adjust if you want) */
-.footer-funding img{
-  height: 112px;   /* <-- your chosen logo size */
+.footer-logo{
+  height: 64px;   /* better for horizontal logos */
   width: auto;
   display:block;
   object-fit:contain;
@@ -197,8 +197,9 @@ nav a:hover, nav a:focus-visible{
     justify-content: center;
     text-align: center;
   }
-  .footer-funding img{height:96px;}
+  .footer-logo{ height:52px; }
 }
+
 @media (max-width: 640px){
   .container{width:min(100% - 1.8rem,100%);}
   .hero-container{width:min(100% - .9rem,100%);}
@@ -258,13 +259,18 @@ nav a:hover, nav a:focus-visible{
 </main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-funding">
-      <!-- Put the logo in your repo at: assets/imls_logo_2c.jpg -->
-      <img src="assets/images/imls_logo_2c.jpg" alt="Institute of Museum and Library Services (IMLS) logo">
-      <div>Funded through the Laura Bush 21st Century Librarian Program</div>
-    </div>
-  </div>
+  <div class="footer-funding">
+  <img class="footer-logo" src="assets/images/imls_logo_2c.jpg"
+       alt="Institute of Museum and Library Services (IMLS) logo">
+
+  <img class="footer-logo" src="assets/images/usc_logo_horizontal_RGB_G.png"
+       alt="University of South Carolina logo">
+
+  <img class="footer-logo" src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
+       alt="USC College of Information and Communications logo">
+
+  <div>Funded through the Laura Bush 21st Century Librarian Program</div>
+</div>
 </footer>
 
 </body>
