@@ -170,34 +170,51 @@ nav a:hover, nav a:focus-visible{
 }
 .footer-funding{
   display:flex;
-  align-items:center;
-  justify-content: center;   /* centers logo + text together */
-  gap: 1.35rem;
+  flex-direction: column;
+  align-items: center;
+  gap: .85rem;
   color:#334155;
-  font-size: 1.08rem;
-  line-height: 1.35;
-  text-align:left;
+  text-align:center;
 }
-/* KEEP logo size the same (adjust if you want) */
+
+.footer-logos{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 1.25rem;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
 .footer-logo{
-  height: 64px;   /* better for horizontal logos */
+  height: 64px;
   width: auto;
   display:block;
   object-fit:contain;
 }
+
+.footer-logo--imls{
+  height: 78px; /* boost IMLS a bit */
+}
+
+.footer-text{
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
 
 /* Mobile */
 @media (max-width: 900px){
   .split-hero{grid-template-columns:1fr}
   nav{gap:1.4rem}
 }
+
 @media (max-width: 720px){
-  .footer-funding{
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+  .footer-logos{
+    gap: .9rem;
   }
   .footer-logo{ height:52px; }
+  .footer-logo--imls{ height:64px; }
+  .footer-text{ font-size: 1rem; }
 }
 
 @media (max-width: 640px){
@@ -206,6 +223,7 @@ nav a:hover, nav a:focus-visible{
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 2.0rem;}
 }
+
 </style>
 </head>
 
@@ -257,21 +275,31 @@ nav a:hover, nav a:focus-visible{
     </div>
   </section>
 </main>
-
+  
 <footer class="site-footer">
-  <div class="footer-funding">
-  <img class="footer-logo" src="assets/images/imls_logo_2c.jpg"
-       alt="Institute of Museum and Library Services (IMLS) logo">
+  <div class="footer-inner">
+    <div class="footer-funding">
+      <div class="footer-logos" aria-label="Funding logos">
+        <img class="footer-logo footer-logo--imls"
+             src="assets/images/imls_logo_2c.jpg"
+             alt="Institute of Museum and Library Services (IMLS) logo">
 
-  <img class="footer-logo" src="assets/images/usc_logo_horizontal_RGB_G.png"
-       alt="University of South Carolina logo">
+        <img class="footer-logo"
+             src="assets/images/usc_logo_horizontal_RGB_G.png"
+             alt="University of South Carolina logo">
 
-  <img class="footer-logo" src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
-       alt="USC College of Information and Communications logo">
+        <img class="footer-logo"
+             src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
+             alt="USC College of Information and Communications logo">
+      </div>
 
-  <div>Funded through the Laura Bush 21st Century Librarian Program</div>
-</div>
+      <div class="footer-text">
+        Funded through the Laura Bush 21st Century Librarian Program
+      </div>
+    </div>
+  </div>
 </footer>
+
 
 </body>
 </html>
