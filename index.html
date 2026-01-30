@@ -123,9 +123,6 @@ header{
 .nav-toggle-icon::after{ top: 7px; }
 
 
-.site-nav.is-open + .nav-toggle .nav-toggle-icon{ background: transparent; }
-
-
 .nav-toggle.is-open .nav-toggle-icon{ background: transparent; }
 .nav-toggle.is-open .nav-toggle-icon::before{ top: 0; transform: rotate(45deg); }
 .nav-toggle.is-open .nav-toggle-icon::after{ top: 0; transform: rotate(-45deg); }
@@ -259,8 +256,39 @@ header{
 @media (max-width: 900px){
   .split-hero{grid-template-columns:1fr}
 
-  /* show hamburger */
-  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+  /* show + enlarge hamburger */
+  .nav-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-radius: 999px;
+  }
+
+  /* bigger/thicker hamburger lines */
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after{
+    width: 30px;
+    height: 3px;
+  }
+  .nav-toggle-icon::before{ top: -10px; }
+  .nav-toggle-icon::after{ top: 10px; }
+
+  /* give brand area room so it doesn't crowd the hamburger */
+  .brand{
+    max-width: calc(100% - 70px);
+  }
+
+  /* make the subtitle wrap into ~2 lines on mobile */
+  .brand-sub{
+    max-width: 22ch;
+    line-height: 1.15;
+    text-wrap: balance; /* safe; ignored if unsupported */
+  }
 
   /* position dropdown relative to header */
   .header-inner{ position:relative; }
@@ -298,7 +326,6 @@ header{
   }
 }
 
-
 @media (max-width: 720px){
   .footer-logos{
     gap: .9rem;
@@ -314,6 +341,7 @@ header{
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 2.0rem;}
 }
+
 
 </style>
 </head>
