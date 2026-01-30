@@ -33,7 +33,7 @@ body{
   margin:0 auto;
 }
 
-/* ===== Header (lowered more) ===== */
+/* ===== Header ===== */
 header{
   background:#fff;
   border-bottom:none;
@@ -53,14 +53,12 @@ header{
   text-transform: uppercase;
   font-size: clamp(1.2rem, 1.4vw, 1.55rem);
 }
-
 .brand-sub{
   color: var(--muted);
   font-size: clamp(.95rem, 1.05vw, 1.2rem);
 }
 
-
-/* Bold nav links (no bubbles) */
+/* Desktop nav */
 .site-nav{
   display:flex;
   flex-wrap:wrap;
@@ -83,7 +81,7 @@ header{
   text-decoration-thickness:2px;
 }
 
-    /* --- Mobile menu button (hidden on desktop) --- */
+/* --- Hamburger button (hidden on desktop) --- */
 .nav-toggle{
   display:none; /* shown in mobile media query */
   border: 1px solid var(--border);
@@ -92,7 +90,6 @@ header{
   padding: .6rem .65rem;
   cursor:pointer;
 }
-
 .nav-toggle:focus-visible{
   outline: 2px solid rgba(19,87,197,.35);
   outline-offset: 3px;
@@ -107,7 +104,6 @@ header{
   background: var(--blue-2);
   border-radius: 999px;
 }
-
 .nav-toggle-icon::before,
 .nav-toggle-icon::after{
   content:"";
@@ -118,18 +114,16 @@ header{
   background: var(--blue-2);
   border-radius: 999px;
 }
-
 .nav-toggle-icon::before{ top: -7px; }
 .nav-toggle-icon::after{ top: 7px; }
 
-
+/* animate to X when open */
 .nav-toggle.is-open .nav-toggle-icon{ background: transparent; }
 .nav-toggle.is-open .nav-toggle-icon::before{ top: 0; transform: rotate(45deg); }
 .nav-toggle.is-open .nav-toggle-icon::after{ top: 0; transform: rotate(-45deg); }
 .nav-toggle-icon,
 .nav-toggle-icon::before,
 .nav-toggle-icon::after{ transition: transform .18s ease, top .18s ease, background .18s ease; }
-
 
 /* ===== Hero wrapper ===== */
 .hero-wrap{
@@ -158,7 +152,6 @@ header{
   padding: clamp(2.0rem, 3.4vw, 3.6rem);
   overflow:hidden;
 }
-/* Wavy background via embedded SVG */
 .split-left::before{
   content:"";
   position:absolute; inset:-1px;
@@ -193,7 +186,6 @@ header{
   max-width: 58ch;
 }
 
-
 /* Full-bleed right image */
 .split-right{ position:relative; background:#0b1020; }
 .split-right img{
@@ -203,45 +195,42 @@ header{
   object-fit:cover;
 }
 
-  /* ===== Project Initiative (centered block, left-aligned text, no box) ===== */
+/* ===== Sections ===== */
 .project-initiative,
 .what-find{
   padding: 0 0 2.8rem;
 }
 .project-initiative .pi-inner,
 .what-find .wf-inner{
-  max-width: 820px;   /* centers the section block */
+  max-width: 820px;
   margin: 0 auto;
-  text-align: left;   /* keeps text left-aligned */
+  text-align: left;
 }
 .project-initiative h2,
 .what-find h2{
   margin: 0 0 .9rem;
-  color: var(--blue-2); /* same as header links */
+  color: var(--blue-2);
   font-size: clamp(1.6rem, 2.2vw, 2.2rem);
   letter-spacing: -.01em;
 }
-.project-initiative p{ 
-  margin: 0; 
-  color: var(--ink); 
-  font-size: 1.05rem; 
-  line-height: 1.75; } 
-  
-.what-find ul{ 
-  margin: 0; 
-  padding-left: 1.25rem; /* bullet indent */ 
-  color: var(--ink); 
-  font-size: 1.05rem; 
-  line-height: 1.75; 
+
+/* match hero paragraph size */
+.project-initiative p{
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.08rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
 }
-
-.what-find li{
-  margin: .35rem 0;
+.what-find ul{
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--ink);
+  font-size: clamp(1.08rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
 }
+.what-find li{ margin: .35rem 0; }
 
-
-/* ===== Footer (centered without changing logo size) ===== */
-/* ===== Footer (centered without changing logo size) ===== */
+/* ===== Footer ===== */
 .site-footer{
   margin-top: 2.4rem;
   padding: 1.8rem 0 2.2rem;
@@ -252,7 +241,6 @@ header{
   margin: 0 auto;
   border-top: 1px solid var(--border);
   padding-top: 1.3rem;
-
   display:flex;
   justify-content: center;
 }
@@ -260,35 +248,28 @@ header{
   display:flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;   /* was .85rem */
+  gap: 1.2rem;
   color:#334155;
   text-align:center;
 }
-
 .footer-logos{
   display:flex;
   align-items:center;
   justify-content:center;
   gap: 1.25rem;
-  flex-wrap: wrap; /* allows wrapping on small screens */
+  flex-wrap: wrap;
 }
-
 .footer-logo{
   height: 64px;
   width: auto;
   display:block;
   object-fit:contain;
 }
-
-.footer-logo--imls{
-  height: 90px; /* boost IMLS a bit */
-}
-
+.footer-logo--imls{ height: 90px; }
 .footer-text{
   font-size: 1.08rem;
   line-height: 1.35;
 }
-
 
 /* Mobile */
 @media (max-width: 900px){
@@ -299,7 +280,6 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
     width: 52px;
     height: 52px;
     padding: 0;
@@ -321,11 +301,11 @@ header{
     max-width: calc(100% - 70px);
   }
 
-  /* make the subtitle wrap into ~2 lines on mobile */
+  /* subtitle wraps nicely on mobile */
   .brand-sub{
     max-width: 22ch;
     line-height: 1.15;
-    text-wrap: balance; /* safe; ignored if unsupported */
+    text-wrap: balance;
   }
 
   /* position dropdown relative to header */
@@ -365,9 +345,7 @@ header{
 }
 
 @media (max-width: 720px){
-  .footer-logos{
-    gap: .9rem;
-  }
+  .footer-logos{ gap: .9rem; }
   .footer-logo{ height:52px; }
   .footer-logo--imls{ height:64px; }
   .footer-text{ font-size: 1rem; }
@@ -379,10 +357,7 @@ header{
   header{padding-top: 1.4rem;}
   .hero-wrap{padding:2.0rem 0 2.0rem;}
 }
-
-  
 </style>
-  
 </head>
 
 <body>
@@ -393,15 +368,18 @@ header{
       <div class="brand-sub">Future Literacy and AI Readiness in Education</div>
     </a>
 
-    <nav aria-label="Main navigation">
+    <button class="nav-toggle" type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="milestones.html">Project Milestones</a>
       <a href="team.html">Team</a>
-      
-<!--  <a href="#">Advisory board</a>
-      <a href="#">Resources</a> -->
-     
       <a href="getinvolved.html">Get Involved</a>
     </nav>
   </div>
@@ -411,7 +389,7 @@ header{
   <section class="hero-wrap">
     <div class="hero-container">
       <div class="hero-card">
-        <div class="split-hero" aria-label="Homepage hero">
+        <div class="split-hero" aria-label="About hero">
           <div class="split-left">
             <div class="split-content">
               <h1>About Flare AI</h1>
@@ -425,16 +403,13 @@ header{
           </div>
 
           <div class="split-right" aria-label="Hero image">
-            <img
-              src="assets/images/about.jpg"
-              alt="Students and AI working together" />
+            <img src="assets/images/about.jpg" alt="Students and AI working together" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project Initiative (NEW) -->
   <section class="project-initiative" aria-label="Project Initiative">
     <div class="container">
       <div class="pi-inner">
@@ -445,12 +420,11 @@ header{
       </div>
     </div>
   </section>
-</main>
 
   <section class="what-find" aria-label="What You’ll Find Here">
     <div class="container">
       <div class="wf-inner">
-        <h2>What Flare AI Aim to Achieve</h2>
+        <h2>What Flare AI Aims to Achieve</h2>
         <ul>
           <li>Create a free, open-access AI literacy curriculum tailored for secondary school librarians.</li>
           <li>Provide ready-to-implement, adaptable teaching materials that fit naturally into school library programs.</li>
@@ -470,19 +444,10 @@ header{
   <div class="footer-inner">
     <div class="footer-funding">
       <div class="footer-logos" aria-label="Funding logos">
-        <img class="footer-logo footer-logo--imls"
-             src="assets/images/imls_logo_2c.jpg"
-             alt="Institute of Museum and Library Services (IMLS) logo">
-
-        <img class="footer-logo"
-             src="assets/images/usc_logo_horizontal_RGB_G.png"
-             alt="University of South Carolina logo">
-
-        <img class="footer-logo"
-             src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
-             alt="USC College of Information and Communications logo">
+        <img class="footer-logo footer-logo--imls" src="assets/images/imls_logo_2c.jpg" alt="Institute of Museum and Library Services (IMLS) logo">
+        <img class="footer-logo" src="assets/images/usc_logo_horizontal_RGB_G.png" alt="University of South Carolina logo">
+        <img class="footer-logo" src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png" alt="USC College of Information and Communications logo">
       </div>
-
       <div class="footer-text">
         Funded through the Laura Bush 21st Century Librarian Program
       </div>
@@ -490,7 +455,7 @@ header{
   </div>
 </footer>
 
-    <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.querySelector(".nav-toggle");
     const nav = document.querySelector("#site-nav");
@@ -498,6 +463,7 @@ header{
 
     const closeMenu = () => {
       nav.classList.remove("is-open");
+      btn.classList.remove("is-open");
       btn.setAttribute("aria-expanded", "false");
       btn.setAttribute("aria-label", "Open menu");
     };
@@ -510,23 +476,18 @@ header{
       btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
 
-    // Close when clicking outside
     document.addEventListener("click", (e) => {
       if (!nav.classList.contains("is-open")) return;
       if (nav.contains(e.target) || btn.contains(e.target)) return;
       closeMenu();
     });
 
-    // Close when a link is clicked
     nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
-    // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMenu();
     });
   });
 </script>
-  
-  
 </body>
 </html>
