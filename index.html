@@ -85,26 +85,54 @@ header{
 
   /* --- Mobile menu button (hidden on desktop) --- */
 .nav-toggle{
-  display:none;
-  border:1px solid var(--border);
+  display:none; /* shown in mobile media query */
+  border: 1px solid var(--border);
   background:#fff;
   border-radius: 12px;
-  padding: .55rem .6rem;
+  padding: .6rem .65rem;
   cursor:pointer;
-  line-height:0;
 }
+
 .nav-toggle:focus-visible{
   outline: 2px solid rgba(19,87,197,.35);
   outline-offset: 3px;
 }
-.nav-toggle-bar{
-  display:block;
-  width: 22px;
+
+/* the 3-line icon */
+.nav-toggle-icon{
+  position: relative;
+  display: block;
+  width: 24px;
   height: 2px;
   background: var(--blue-2);
-  margin: 4px 0;
   border-radius: 999px;
 }
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after{
+  content:"";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--blue-2);
+  border-radius: 999px;
+}
+
+.nav-toggle-icon::before{ top: -7px; }
+.nav-toggle-icon::after{ top: 7px; }
+
+
+.site-nav.is-open + .nav-toggle .nav-toggle-icon{ background: transparent; }
+
+
+.nav-toggle.is-open .nav-toggle-icon{ background: transparent; }
+.nav-toggle.is-open .nav-toggle-icon::before{ top: 0; transform: rotate(45deg); }
+.nav-toggle.is-open .nav-toggle-icon::after{ top: 0; transform: rotate(-45deg); }
+.nav-toggle-icon,
+.nav-toggle-icon::before,
+.nav-toggle-icon::after{ transition: transform .18s ease, top .18s ease, background .18s ease; }
+
 
 
 /* ===== Hero wrapper ===== */
@@ -298,14 +326,15 @@ header{
       <div class="brand-sub">Future Literacy and AI Readiness in Education</div>
     </a>
 
-   <button class="nav-toggle" type="button"
+<button class="nav-toggle" 
+  type="button"
   aria-label="Open menu"
   aria-expanded="false"
   aria-controls="site-nav">
-  <span class="nav-toggle-bar"></span>
-  <span class="nav-toggle-bar"></span>
-  <span class="nav-toggle-bar"></span>
-    </button>
+  <span class="nav-toggle-icon" 
+    aria-hidden="true"></span>
+</button>
+
 
 <nav id="site-nav" class="site-nav" aria-label="Main navigation">
   <a href="home.html">Home</a>
@@ -385,6 +414,7 @@ header{
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       const isOpen = nav.classList.toggle("is-open");
+      btn.classList.toggle("is-open", isOpen);
       btn.setAttribute("aria-expanded", String(isOpen));
       btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
