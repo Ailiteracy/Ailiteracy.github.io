@@ -61,26 +61,51 @@ header{
 
 
 /* Bold nav links (no bubbles) */
-nav{
+.site-nav{
   display:flex;
   flex-wrap:wrap;
   gap:2.2rem;
   font-size:1.05rem;
   align-items:center;
 }
-nav a{
+.site-nav a{
   text-decoration:none;
   color: var(--blue-2);
   font-weight:700;
   padding:.15rem 0;
 }
-nav a:hover, nav a:focus-visible{
+.site-nav a:hover,
+.site-nav a:focus-visible{
   outline:none;
   color: var(--blue-2);
   text-decoration:underline;
   text-underline-offset:6px;
   text-decoration-thickness:2px;
 }
+
+  /* --- Mobile menu button (hidden on desktop) --- */
+.nav-toggle{
+  display:none;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius: 12px;
+  padding: .55rem .6rem;
+  cursor:pointer;
+  line-height:0;
+}
+.nav-toggle:focus-visible{
+  outline: 2px solid rgba(19,87,197,.35);
+  outline-offset: 3px;
+}
+.nav-toggle-bar{
+  display:block;
+  width: 22px;
+  height: 2px;
+  background: var(--blue-2);
+  margin: 4px 0;
+  border-radius: 999px;
+}
+
 
 /* ===== Hero wrapper ===== */
 .hero-wrap{
@@ -205,8 +230,46 @@ nav a:hover, nav a:focus-visible{
 /* Mobile */
 @media (max-width: 900px){
   .split-hero{grid-template-columns:1fr}
-  nav{gap:1.4rem}
+
+  /* show hamburger */
+  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* position dropdown relative to header */
+  .header-inner{ position:relative; }
+
+  /* hide nav by default on mobile */
+  .site-nav{
+    display:none;
+    position:absolute;
+    right:0;
+    top: calc(100% + .6rem);
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius: 14px;
+    padding: .6rem;
+    box-shadow: 0 18px 45px rgba(15,23,42,.12);
+    min-width: 240px;
+    flex-direction: column;
+    gap: 0;
+    z-index: 50;
+  }
+
+  /* show nav when open */
+  .site-nav.is-open{ display:flex; }
+
+  /* bigger tap targets */
+  .site-nav a{
+    padding: .65rem .75rem;
+    border-radius: 10px;
+  }
+  .site-nav a:hover,
+  .site-nav a:focus-visible{
+    outline:none;
+    background: rgba(19,87,197,.08);
+    text-decoration:none;
+  }
 }
+
 
 @media (max-width: 720px){
   .footer-logos{
@@ -235,17 +298,23 @@ nav a:hover, nav a:focus-visible{
       <div class="brand-sub">Future Literacy and AI Readiness in Education</div>
     </a>
 
-    <nav aria-label="Main navigation">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="milestones.html">Project Milestones</a>
-      <a href="team.html">Team</a>
-      
-<!--  <a href="#">Advisory board</a>
-      <a href="#">Resources</a> -->
-     
-      <a href="getinvolved.html">Get Involved</a>
-    </nav>
+   <button class="nav-toggle" type="button"
+  aria-label="Open menu"
+  aria-expanded="false"
+  aria-controls="site-nav">
+  <span class="nav-toggle-bar"></span>
+  <span class="nav-toggle-bar"></span>
+  <span class="nav-toggle-bar"></span>
+    </button>
+
+<nav id="site-nav" class="site-nav" aria-label="Main navigation">
+  <a href="home.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="milestones.html">Project Milestones</a>
+  <a href="team.html">Team</a>
+  <a href="getinvolved.html">Get Involved</a>
+</nav>
+
   </div>
 </header>
 
@@ -300,6 +369,44 @@ nav a:hover, nav a:focus-visible{
   </div>
 </footer>
 
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.querySelector(".nav-toggle");
+    const nav = document.querySelector("#site-nav");
+    if (!btn || !nav) return;
+
+    const closeMenu = () => {
+      nav.classList.remove("is-open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Open menu");
+    };
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = nav.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+      btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!nav.classList.contains("is-open")) return;
+      if (nav.contains(e.target) || btn.contains(e.target)) return;
+      closeMenu();
+    });
+
+    // Close when a link is clicked
+    nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  });
+</script>
+
+  
 
 </body>
 </html>
