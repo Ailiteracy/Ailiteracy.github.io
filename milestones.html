@@ -188,7 +188,7 @@ header{
   object-fit:cover;
 }
 
-/* ===== Timeline (themed, NOT black) ===== */
+/* ===== Timeline (themed) ===== */
 .timeline-wrap{
   padding: 2.6rem 0 2.8rem;
 }
@@ -336,7 +336,7 @@ header{
   line-height: 1.35;
 }
 
-/* Mobile */
+/* ===== Mobile header dropdown ===== */
 @media (max-width: 900px){
   .split-hero{grid-template-columns:1fr}
 
@@ -362,9 +362,7 @@ header{
   .nav-toggle-icon::after{ top: 10px; }
 
   /* give brand area room so it doesn't crowd the hamburger */
-  .brand{
-    max-width: calc(100% - 70px);
-  }
+  .brand{ max-width: calc(100% - 70px); }
 
   /* subtitle wraps nicely on mobile */
   .brand-sub{
@@ -423,8 +421,6 @@ header{
   .hero-wrap{padding:2.0rem 0 2.0rem;}
 }
 </style>
-
-  
 </head>
 
 <body>
@@ -435,7 +431,14 @@ header{
       <div class="brand-sub">Future Literacy and AI Readiness in Education</div>
     </a>
 
-    <nav aria-label="Main navigation">
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-toggle" type="button"
+            aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <!-- IMPORTANT: id + class must match CSS/JS -->
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="milestones.html">Project Milestones</a>
@@ -449,7 +452,7 @@ header{
   <section class="hero-wrap">
     <div class="hero-container">
       <div class="hero-card">
-        <div class="split-hero" aria-label="Homepage hero">
+        <div class="split-hero" aria-label="Project Milestones hero">
           <div class="split-left">
             <div class="split-content">
               <h1>Project Milestones</h1>
@@ -463,15 +466,14 @@ header{
           </div>
 
           <div class="split-right" aria-label="Hero image">
-            <img src="assets/images/milestones.jpeg" 
-              alt="Student lerning online" />
+            <img src="assets/images/milestones.jpeg" alt="Student learning online" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE (themed) -->
+  <!-- TIMELINE -->
   <section class="timeline-wrap" aria-label="Milestones timeline">
     <div class="container">
       <div class="timeline">
@@ -521,7 +523,7 @@ header{
             </div>
           </li>
 
-          <li> 
+          <li>
             <div class="timeline-content">
               <h3 class="date">August 2027–December 2027</h3>
               <h1>Phase 5 (Year 3)</h1>
@@ -531,8 +533,8 @@ header{
               </p>
             </div>
           </li>
-          
-          <li> 
+
+          <li>
             <div class="timeline-content">
               <h3 class="date">January 2028–July 2028</h3>
               <h1>Phase 6 (Year 3)</h1>
@@ -543,7 +545,7 @@ header{
               </p>
             </div>
           </li>
-          
+
         </ul>
       </div>
     </div>
@@ -574,7 +576,7 @@ header{
   </div>
 </footer>
 
-    <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.querySelector(".nav-toggle");
     const nav = document.querySelector("#site-nav");
@@ -582,6 +584,7 @@ header{
 
     const closeMenu = () => {
       nav.classList.remove("is-open");
+      btn.classList.remove("is-open");
       btn.setAttribute("aria-expanded", "false");
       btn.setAttribute("aria-label", "Open menu");
     };
@@ -594,23 +597,19 @@ header{
       btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
 
-    // Close when clicking outside
     document.addEventListener("click", (e) => {
       if (!nav.classList.contains("is-open")) return;
       if (nav.contains(e.target) || btn.contains(e.target)) return;
       closeMenu();
     });
 
-    // Close when a link is clicked
     nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
-    // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMenu();
     });
   });
 </script>
-  
 
 </body>
 </html>
