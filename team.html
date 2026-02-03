@@ -1,937 +1,328 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FLARE AI — Team</title>
+<!-- ===================== -->
+<!-- TEAM: one continuous grid, no section titles -->
+<!-- Replace EVERYTHING from "<!-- Co-PIs -->" down to just before </main> with this -->
+<!-- ===================== -->
 
 <style>
-:root{
-  --ink:#0f172a;
-  --muted:#64748b;
-  --border:#e5e7eb;
-
-  --blue:#0b3b8d;
-  --blue-2:#1357c5;
-
-  --page:#ffffff;
-  --panel:#f8fafc;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--ink);
-  background:var(--page);
-}
-
-/* UPDATED: wider container so 4 cards can fit on desktop */
-.container{
-  width:min(1280px, 100% - 2.5rem);
-  margin:0 auto;
-}
-.hero-container{
-  width:min(1480px, 100% - 1.0rem);
-  margin:0 auto;
-}
-
-/* ===== Header ===== */
-header{
-  background:#fff;
-  border-bottom:none;
-  padding-top: 2.25rem;
-}
-.header-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1.15rem 0;
-  gap:1rem;
-}
-.brand{display:flex;flex-direction:column;gap:.1rem;text-decoration:none;color:inherit}
-.brand-main{
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: clamp(1.2rem, 1.4vw, 1.55rem);
-}
-.brand-sub{
-  color: var(--muted);
-  font-size: clamp(.95rem, 1.05vw, 1.2rem);
-}
-
-/* Desktop nav */
-.site-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:2.2rem;
-  font-size:1.05rem;
-  align-items:center;
-}
-.site-nav a{
-  text-decoration:none;
-  color: var(--blue-2);
-  font-weight:700;
-  padding:.15rem 0;
-}
-.site-nav a:hover,
-.site-nav a:focus-visible{
-  outline:none;
-  color: var(--blue-2);
-  text-decoration:underline;
-  text-underline-offset:6px;
-  text-decoration-thickness:2px;
-}
-
-/* --- Hamburger button (hidden on desktop) --- */
-.nav-toggle{
-  display:none; /* shown in mobile media query */
-  border: 1px solid var(--border);
-  background:#fff;
-  border-radius: 12px;
-  padding: .6rem .65rem;
-  cursor:pointer;
-}
-.nav-toggle:focus-visible{
-  outline: 2px solid rgba(19,87,197,.35);
-  outline-offset: 3px;
-}
-
-/* the 3-line icon */
-.nav-toggle-icon{
-  position: relative;
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--blue-2);
-  border-radius: 999px;
-}
-.nav-toggle-icon::before,
-.nav-toggle-icon::after{
-  content:"";
-  position: absolute;
-  left: 0;
-  width: 24px;
-  height: 2px;
-  background: var(--blue-2);
-  border-radius: 999px;
-}
-.nav-toggle-icon::before{ top: -7px; }
-.nav-toggle-icon::after{ top: 7px; }
-
-/* animate to X when open */
-.nav-toggle.is-open .nav-toggle-icon{ background: transparent; }
-.nav-toggle.is-open .nav-toggle-icon::before{ top: 0; transform: rotate(45deg); }
-.nav-toggle.is-open .nav-toggle-icon::after{ top: 0; transform: rotate(-45deg); }
-.nav-toggle-icon,
-.nav-toggle-icon::before,
-.nav-toggle-icon::after{ transition: transform .18s ease, top .18s ease, background .18s ease; }
-
-/* ===== Hero ===== */
-.hero-wrap{
-  padding: 2.6rem 0 2.2rem;
-}
-.hero-card{
-  border-radius: 1.35rem;
-  overflow:hidden;
-  border:1px solid var(--border);
-  background:#fff;
-  box-shadow: 0 18px 45px rgba(15,23,42,.08);
-}
-.split-hero{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 560px;
-}
-.split-left{
-  position:relative;
-  background: var(--blue);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  padding: clamp(2.0rem, 3.4vw, 3.6rem);
-  overflow:hidden;
-}
-.split-left::before{
-  content:"";
-  position:absolute; inset:-1px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%230b3b8d'/%3E%3Cpath d='M-40 82C172 8 255 25 398 100c168 88 260 83 376 30 150-69 253-72 466 22v192H-40V82z' fill='%231357c5' fill-opacity='0.55'/%3E%3Cpath d='M-40 390c155-92 304-86 424-20 131 72 238 75 368 6 168-89 285-78 448 30v250H-40V390z' fill='%231357c5' fill-opacity='0.45'/%3E%3Cpath d='M-40 650c210-120 379-110 520-30 141 80 276 78 412-6 151-93 257-90 348-48v234H-40V650z' fill='%231357c5' fill-opacity='0.35'/%3E%3C/svg%3E");
-  background-size:cover;
-  background-position:center;
-  pointer-events:none;
-}
-.split-left::after{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(900px 420px at 10% 20%, rgba(255,255,255,.14), transparent 60%),
-    radial-gradient(900px 420px at 30% 80%, rgba(255,255,255,.08), transparent 60%);
-  pointer-events:none;
-}
-.split-content{position:relative; max-width: 600px;}
-.split-content h1{
-  margin:0 0 1.2rem;
-  font-size: clamp(2.1rem, 3.35vw, 3.15rem);
-  line-height:1.06;
-  letter-spacing:-.02em;
-}
-.split-content p{
-  margin:0;
-  font-size: clamp(1.08rem, 1.2vw, 1.25rem);
-  line-height:1.6;
-  color: rgba(255,255,255,.90);
-  max-width: 58ch;
-}
-
-.split-right{ position:relative; background:#0b1020; }
-.split-right img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-}
-
 /* ===== Team Sections ===== */
 .team-wrap{ padding: 1.2rem 0 2.2rem; }
 
-/* Bigger section headings */
-.section-head h2{
-  margin: 0 0 1rem;
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  font-weight: 850;
-  letter-spacing: -.01em;
-  color: var(--blue-2);
-}
-
-/* ===== Grid: tuned so 4 cards can fit on wider screens ===== */
+/* ===== Grid: 5 cards per row on desktop ===== */
 .team-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
-  justify-content: start;
   align-items: start;
   margin: 0;
 }
 
-/* ===== Member Card (shared size) ===== */
-.member-card{
-  border:1px solid var(--border);
-  border-radius: 14px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow: 0 10px 24px rgba(15,23,42,.06);
-  display:flex;
-  flex-direction:column;
-
-  width:100%;
-  max-width:260px;
-  align-self:start;
+/* 4 across */
+@media (max-width: 1200px){
+  .team-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* Image area */
-.member-photo{
-  width:100%;
-  height: 260px;
-  background:#0b1020;
-  overflow:hidden;
-}
-.member-photo img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit: cover;
-  object-position: center;
+/* 3 across */
+@media (max-width: 960px){
+  .team-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-.member-body{
-  padding: .85rem .9rem 1rem;
-  display:flex;
-  flex-direction:column;
-  gap: .25rem;
-}
-.member-body p{ margin:0; }
-
-.member-name{
-  margin:0;
-  font-size: 1.02rem;
-  font-weight: 850;
-  letter-spacing: -.01em;
-}
-.member-role{
-  font-weight: 700;
-  color: var(--blue-2);
-  font-size: .92rem;
-}
-.member-inst{
-  color: var(--muted);
-  font-size: .92rem;
-  line-height: 1.25;
-}
-
-/* Expandable details */
-.member-more{
-  margin-top: .45rem;
-  border-top: 1px solid var(--border);
-  padding-top: .6rem;
-}
-.member-more summary{
-  cursor:pointer;
-  color: var(--blue-2);
-  font-weight: 800;
-  font-size: .92rem;
-  list-style:none;
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-}
-.member-more summary::-webkit-details-marker{ display:none; }
-.member-more summary:focus-visible{
-  outline: 2px solid rgba(19,87,197,.35);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-.member-more summary::after{
-  content:"▾";
-  font-size: 1rem;
-  line-height: 1;
-  transform-origin: center;
-  transition: transform .18s ease;
-}
-.member-more[open] summary::after{
-  transform: rotate(180deg);
-}
-.member-bio{
-  margin:.55rem 0 0;
-  color: var(--muted);
-  font-size: .92rem;
-  line-height:1.5;
-}
-
-/* Links inside expanded area */
-.member-links{
-  margin-top: .65rem;
-  display:flex;
-  flex-wrap:wrap;
-  gap: .5rem;
-}
-.member-links a{
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  padding:.35rem .6rem;
-  border:1px solid var(--border);
-  border-radius: 999px;
-  text-decoration:none;
-  font-weight:750;
-  font-size: .9rem;
-  color: var(--blue-2);
-  background:#fff;
-}
-.member-links a:hover,
-.member-links a:focus-visible{
-  outline:none;
-  text-decoration:underline;
-  text-underline-offset: 4px;
-}
-
-/* ===== Footer ===== */
-.site-footer{
-  margin-top: 2.4rem;
-  padding: 1.8rem 0 2.2rem;
-  background: #ffffff;
-}
-.footer-inner{
-  width: min(1280px, 100% - 2.5rem);
-  margin: 0 auto;
-  border-top: 1px solid var(--border);
-  padding-top: 1.3rem;
-
-  display:flex;
-  justify-content: center;
-}
-.footer-funding{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-  color:#334155;
-  text-align:center;
-}
-
-.footer-logos{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.footer-logo{
-  height: 64px;
-  width: auto;
-  display:block;
-  object-fit:contain;
-}
-
-.footer-logo--imls{
-  height: 90px;
-}
-
-.footer-text{
-  font-size: 1.08rem;
-  line-height: 1.35;
-}
-
-/* ===== Mobile header dropdown ===== */
-@media (max-width: 900px){
-  .split-hero{grid-template-columns:1fr}
-
-  /* show + enlarge hamburger */
-  .nav-toggle{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width: 52px;
-    height: 52px;
-    padding: 0;
-    border-radius: 999px;
-  }
-
-  /* bigger/thicker hamburger lines */
-  .nav-toggle-icon,
-  .nav-toggle-icon::before,
-  .nav-toggle-icon::after{
-    width: 30px;
-    height: 3px;
-  }
-  .nav-toggle-icon::before{ top: -10px; }
-  .nav-toggle-icon::after{ top: 10px; }
-
-  /* give brand area room so it doesn't crowd the hamburger */
-  .brand{ max-width: calc(100% - 70px); }
-
-  /* subtitle wraps nicely on mobile */
-  .brand-sub{
-    max-width: 22ch;
-    line-height: 1.15;
-    text-wrap: balance;
-  }
-
-  /* position dropdown relative to header */
-  .header-inner{ position:relative; }
-
-  /* hide nav by default on mobile */
-  .site-nav{
-    display:none;
-    position:absolute;
-    right:0;
-    top: calc(100% + .6rem);
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius: 14px;
-    padding: .6rem;
-    box-shadow: 0 18px 45px rgba(15,23,42,.12);
-    min-width: 240px;
-    flex-direction: column;
-    gap: 0;
-    z-index: 50;
-  }
-
-  /* show nav when open */
-  .site-nav.is-open{ display:flex; }
-
-  /* bigger tap targets */
-  .site-nav a{
-    padding: .65rem .75rem;
-    border-radius: 10px;
-  }
-  .site-nav a:hover,
-  .site-nav a:focus-visible{
-    outline:none;
-    background: rgba(19,87,197,.08);
-    text-decoration:none;
-  }
-}
-
-@media (max-width: 720px){
-  .footer-logos{ gap: .9rem; }
-  .footer-logo{ height:52px; }
-  .footer-logo--imls{ height:64px; }
-  .footer-text{ font-size: 1rem; }
-}
-
+/* 2 across */
 @media (max-width: 640px){
-  .container{width:min(100% - 1.8rem,100%);}
-  .hero-container{width:min(100% - .9rem,100%);}
-  header{padding-top: 1.4rem;}
-  .hero-wrap{padding:2.0rem 0 2.0rem;}
+  .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 1 across */
+@media (max-width: 420px){
+  .team-grid{ grid-template-columns: 1fr; }
+}
+
+/* Let cards fill the grid columns (override your max-width) */
+.member-card{
+  width:100%;
+  max-width:none;
 }
 </style>
-</head>
 
-<body>
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="home.html">
-      <div class="brand-main">FLARE AI</div>
-      <div class="brand-sub">Future Literacy and AI Readiness in Education</div>
-    </a>
+<section class="team-wrap" aria-label="Team members">
+  <div class="container">
+    <div class="team-grid">
 
-    <!-- Hamburger (mobile only) -->
-    <button class="nav-toggle" type="button"
-            aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-    </button>
-
-    <!-- IMPORTANT: id + class must match CSS/JS -->
-    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="milestones.html">Project Milestones</a>
-      <a href="team.html">Team</a>
-      <a href="getinvolved.html">Get Involved</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="hero-wrap">
-    <div class="hero-container">
-      <div class="hero-card">
-        <div class="split-hero" aria-label="Team hero">
-          <div class="split-left">
-            <div class="split-content">
-              <h1>Team</h1>
-              <p>
-                Meet the people behind this national initiative to advance AI literacy in secondary school libraries. Our team
-                brings together expertise in school librarianship, information science, and AI education to co-design
-                practical, open-access resources shaped by librarians’ real-world needs.
-              </p>
-            </div>
-          </div>
-
-          <div class="split-right" aria-label="Hero image">
-            <img src="assets/images/team2.jpg" alt="Team" />
-          </div>
+      <!-- Co-PIs -->
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Co-PIs -->
-  <section class="team-wrap" aria-label="Co-PIs">
-    <div class="container">
-      <div class="section-head">
-        <h2>Co-PIs</h2>
-      </div>
+        <div class="member-body">
+          <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
+          <p class="member-role">Associate Professor</p>
+          <p class="member-inst">University of South Carolina</p>
 
-      <div class="team-grid">
+          <details class="member-more">
+            <summary>More</summary>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
-          </div>
+            <p class="member-bio">
+              Ehsan applies AI, big data, and computational methods to questions in information science and digital
+              environments. His work includes analytics using quantitative and qualitative approaches to understand how
+              people create, share, and use information online. He leads the project’s AI content to ensure concepts are
+              accurate, current, and accessible for school librarians.
+            </p>
 
-          <div class="member-body">
-            <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
-            <p class="member-role">Associate Professor</p>
-            <p class="member-inst">University of South Carolina</p>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://ehsanmohammadi.com" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:EHSAN2@sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-            <details class="member-more">
-              <summary>More</summary>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/moore_jennifer.jpg" alt="Dr. Jennifer Moore" />
+        </div>
 
-              <p class="member-bio">
-                Ehsan applies AI, big data, and computational methods to questions in information science and digital
-                environments. His work includes analytics using quantitative and qualitative approaches to understand how
-                people create, share, and use information online. He leads the project’s AI content to ensure concepts are
-                accurate, current, and accessible for school librarians.
-              </p>
+        <div class="member-body">
+          <h3 class="member-name">Dr. Jennifer Moore</h3>
+          <p class="member-role">Associate Professor</p>
+          <p class="member-inst">University of South Carolina</p>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://ehsanmohammadi.com" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:EHSAN2@sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
+          <details class="member-more">
+            <summary>More</summary>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/moore_jennifer.jpg" alt="Dr. Jennifer Moore" />
-          </div>
+            <p class="member-bio">
+              Jennifer focuses on school librarianship education, evidence-based practice, and curriculum development
+              for library and learning contexts. Her work centers on designing instruction that helps librarians teach
+              emerging literacies and support student learning. She leads the project’s research and curriculum
+              development to ensure materials are practical, adaptable, and aligned with secondary school library needs.
+            </p>
 
-          <div class="member-body">
-            <h3 class="member-name">Dr. Jennifer Moore</h3>
-            <p class="member-role">Associate Professor</p>
-            <p class="member-inst">University of South Carolina</p>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/moore_jennifer.php" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:JM328@mailbox.sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-            <details class="member-more">
-              <summary>More</summary>
+      <!-- Research Assistants -->
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/nguyen_quynh.jpg" alt="Quynh Nguyen" />
+        </div>
 
-              <p class="member-bio">
-                Jennifer focuses on school librarianship education, evidence-based practice, and curriculum development
-                for library and learning contexts. Her work centers on designing instruction that helps librarians teach
-                emerging literacies and support student learning. She leads the project’s research and curriculum
-                development to ensure materials are practical, adaptable, and aligned with secondary school library needs.
-              </p>
+        <div class="member-body">
+          <h3 class="member-name">Quynh Nguyen</h3>
+          <p class="member-role">Research Assistant</p>
+          <p class="member-inst">University of South Carolina</p>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/moore_jennifer.php" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:JM328@mailbox.sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+          <details class="member-more">
+            <summary>More</summary>
 
-  <!-- Research Assistants -->
-  <section class="team-wrap" aria-label="Research Assistants">
-    <div class="container">
-      <div class="section-head">
-        <h2>Research Assistants</h2>
-      </div>
+            <p class="member-bio">
+              Quynh is a PhD student at the University of South Carolina who is interested in how data and technology
+              address contemporary information challenges. She is excited to work on interdisciplinary projects
+              that connect people, data, and technological systems.
+            </p>
 
-      <div class="team-grid">
+            <div class="member-links" aria-label="Member links">
+              <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/nguyen_quynh.php" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:pnnguyen@email.sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/nguyen_quynh.jpg" alt="Quynh Nguyen" />
-          </div>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/borji_samaneh.jpg" alt="Samaneh Borji" />
+        </div>
 
-          <div class="member-body">
-            <h3 class="member-name">Quynh Nguyen</h3>
-            <p class="member-role">Research Assistant</p>
-            <p class="member-inst">University of South Carolina</p>
+        <div class="member-body">
+          <h3 class="member-name">Samaneh Borji</h3>
+          <p class="member-role">Research Assistant</p>
+          <p class="member-inst">University of South Carolina</p>
 
-            <details class="member-more">
-              <summary>More</summary>
+          <details class="member-more">
+            <summary>More</summary>
 
-              <p class="member-bio">
-                Quynh is a PhD student at the University of South Carolina who is interested in how data and technology
-                address contemporary information challenges. She is excited to work on interdisciplinary projects
-                that connect people, data, and technological systems.
-              </p>
+            <p class="member-bio">
+              Samaneh has a background in computer science, teaching, communication, and research. She builds bridges between
+              computer science and information science, with a focus on AI literacy, information literacy, and helping people
+              navigate mass information and avoid misleading content.
+            </p>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/nguyen_quynh.php" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:pnnguyen@email.sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/borji_samaneh.php" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:sborji@email.sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/borji_samaneh.jpg" alt="Samaneh Borji" />
-          </div>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/kalantari_amirreza.jpg" alt="Amirreza Kalantari" />
+        </div>
 
-          <div class="member-body">
-            <h3 class="member-name">Samaneh Borji</h3>
-            <p class="member-role">Research Assistant</p>
-            <p class="member-inst">University of South Carolina</p>
+        <div class="member-body">
+          <h3 class="member-name">Amirreza Kalantari</h3>
+          <p class="member-role">Research Assistant</p>
+          <p class="member-inst">University of South Carolina</p>
 
-            <details class="member-more">
-              <summary>More</summary>
+          <details class="member-more">
+            <summary>More</summary>
 
-              <p class="member-bio">
-                Samaneh has a background in computer science, teaching, communication, and research. She builds bridges between
-                computer science and information science, with a focus on AI literacy, information literacy, and helping people
-                navigate mass information and avoid misleading content.
-              </p>
+            <p class="member-bio">
+              Amirreza joined the School of Information Science at the University of South Carolina in August 2024. His
+              research interests include human centered AI, information behavior, and computational methods for studying
+              digital information spaces.
+            </p>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/borji_samaneh.php" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:sborji@email.sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/kalantari_amirreza.php" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:amirrezakalantari@sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/kalantari_amirreza.jpg" alt="Amirreza Kalantari" />
-          </div>
+      <!-- Advisory Board -->
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/darnell_jean.png" alt="Jean Darnell" />
+        </div>
 
-          <div class="member-body">
-            <h3 class="member-name">Amirreza Kalantari</h3>
-            <p class="member-role">Research Assistant</p>
-            <p class="member-inst">University of South Carolina</p>
+        <div class="member-body">
+          <h3 class="member-name">Jean Darnell</h3>
+          <p class="member-role">Director of Library Sciences</p>
+          <p class="member-inst">School District of Philadelphia</p>
 
-            <details class="member-more">
-              <summary>More</summary>
+          <details class="member-more">
+            <summary>More</summary>
 
-              <p class="member-bio">
-                Amirreza joined the School of Information Science at the University of South Carolina in August 2024. His
-                research interests include human centered AI, information behavior, and computational methods for studying
-                digital information spaces.
-              </p>
+            <p class="member-bio">
+              Jean supports school library programs with a focus on responsible technology use and ethical decision-making
+              around AI. Her work emphasizes practical guidance that helps educators and students navigate AI thoughtfully.
+              She advises on ethics-informed implementation and helps keep the curriculum relevant to real school library practice.
+            </p>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/kalantari_amirreza.php" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:amirrezakalantari@sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://www.awakenlibrarian.com" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:duchessofmycastl@gmail.com">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-  <!-- Advisory Board -->
-  <section class="team-wrap" aria-label="Advisory Board">
-    <div class="container">
-      <div class="section-head">
-        <h2>Advisory Board</h2>
-      </div>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/malespina_elissa.jpeg" alt="Elissa Malespina" />
+        </div>
 
-      <div class="team-grid">
+        <div class="member-body">
+          <h3 class="member-name">Elissa Malespina</h3>
+          <p class="member-role">High School Librarian</p>
+          <p class="member-inst">Union High School</p>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/darnell_jean.png" alt="Jean Darnell" />
-          </div>
+          <details class="member-more">
+            <summary>More</summary>
 
-          <div class="member-body">
-            <h3 class="member-name">Jean Darnell</h3>
-            <p class="member-role">Director of Library Sciences</p>
-            <p class="member-inst">School District of Philadelphia</p>
+            <p class="member-bio">
+              Elissa works at the intersection of school libraries, instructional technology, and AI in education. Her
+              practice and writing focus on how librarians can lead AI-aware teaching and learning in schools. She advises
+              on classroom-ready integration and helps ensure the curriculum fits day-to-day library instruction.
+            </p>
 
-            <details class="member-more">
-              <summary>More</summary>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://www.elissamalespina.com/about-me.html" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:emalespina@gmail.com">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-              <p class="member-bio">
-                Jean supports school library programs with a focus on responsible technology use and ethical decision-making
-                around AI. Her work emphasizes practical guidance that helps educators and students navigate AI thoughtfully.
-                She advises on ethics-informed implementation and helps keep the curriculum relevant to real school library practice.
-              </p>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/olliff_verity.png" alt="Verity Olliff" />
+        </div>
 
-              <div class="member-links" aria-label="Member links">
-                <a href="https://www.awakenlibrarian.com" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:duchessofmycastl@gmail.com">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
+        <div class="member-body">
+          <h3 class="member-name">Verity Olliff</h3>
+          <p class="member-role">High School Librarian and Instructional Technology Coach</p>
+          <p class="member-inst">Rio Mesa High School</p>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/malespina_elissa.jpeg" alt="Elissa Malespina" />
-          </div>
+          <details class="member-more">
+            <summary>More</summary>
 
-          <div class="member-body">
-            <h3 class="member-name">Elissa Malespina</h3>
-            <p class="member-role">High School Librarian</p>
-            <p class="member-inst">Union High School</p>
+            <p class="member-bio">
+              Verity supports teaching and learning as a school librarian and instructional technology coach. Her work
+              includes reviewing and implementing curriculum that builds digital and AI-related literacies for students. She
+              provides feedback on usability, pacing, and instructional effectiveness for secondary school settings.
+            </p>
 
-            <details class="member-more">
-              <summary>More</summary>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://www.linkedin.com/in/verity-olliff/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-              <p class="member-bio">
-                Elissa works at the intersection of school libraries, instructional technology, and AI in education. Her
-                practice and writing focus on how librarians can lead AI-aware teaching and learning in schools. She advises
-                on classroom-ready integration and helps ensure the curriculum fits day-to-day library instruction.
-              </p>
-              <div class="member-links" aria-label="Member links">
-                <a href="https://www.elissamalespina.com/about-me.html" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:emalespina@gmail.com">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
+      <!-- Consultants -->
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/ghosh_souvick.jpg" alt="Dr. Souvick Ghosh" />
+        </div>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/olliff_verity.png" alt="Verity Olliff" />
-          </div>
+        <div class="member-body">
+          <h3 class="member-name">Dr. Souvick Ghosh</h3>
+          <p class="member-role">Associate Professor</p>
+          <p class="member-inst">San José State University</p>
 
-          <div class="member-body">
-            <h3 class="member-name">Verity Olliff</h3>
-            <p class="member-role">High School Librarian and Instructional Technology Coach</p>
-            <p class="member-inst">Rio Mesa High School</p>
+          <details class="member-more">
+            <summary>More</summary>
 
-            <details class="member-more">
-              <summary>More</summary>
+            <p class="member-bio">
+              Souvick studies AI-driven information systems and how people interact with AI in library and learning
+              contexts. His work emphasizes human-centered approaches to designing and evaluating AI-supported services
+              and instruction. He advises on integrating AI literacy into library settings and supports the development
+              of curriculum assessment approaches.
+            </p>
 
-              <p class="member-bio">
-                Verity supports teaching and learning as a school librarian and instructional technology coach. Her work
-                includes reviewing and implementing curriculum that builds digital and AI-related literacies for students. She
-                provides feedback on usability, pacing, and instructional effectiveness for secondary school settings.
-              </p>
-              <div class="member-links" aria-label="Member links">
-                <a href="https://www.linkedin.com/in/verity-olliff/" target="_blank" rel="noopener">LinkedIn</a>
-              </div>
-            </details>
-          </div>
-        </article>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://souvickg.github.io" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:souvick.ghosh@sjsu.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-        
-      </div>
-    </div>
-  </section>
+      <article class="member-card">
+        <div class="member-photo">
+          <img src="assets/images/novin_alamir2024.jpg" alt="Dr. Alamir Novin" />
+        </div>
 
-  <!-- Consultants -->
-  <section class="team-wrap" aria-label="Consultants">
-    <div class="container">
-      <div class="section-head">
-        <h2>Consultants</h2>
-      </div>
+        <div class="member-body">
+          <h3 class="member-name">Dr. Alamir Novin</h3>
+          <p class="member-role">Assistant Professor</p>
+          <p class="member-inst">University of South Carolina</p>
 
-      <div class="team-grid">
+          <details class="member-more">
+            <summary>More</summary>
 
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/ghosh_souvick.jpg" alt="Dr. Souvick Ghosh" />
-          </div>
+            <p class="member-bio">
+              Alamir examines cognition, information behavior, and user experience in the ways people seek, interpret,
+              and apply information. His work helps translate behavioral insights into effective learning and system
+              design. He advises on learner-centered instructional strategies and how secondary students understand and interact with AI.
+            </p>
 
-          <div class="member-body">
-            <h3 class="member-name">Dr. Souvick Ghosh</h3>
-            <p class="member-role">Associate Professor</p>
-            <p class="member-inst">San José State University</p>
+            <div class="member-links" aria-label="Member links">
+              <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/novin_alamir.php" target="_blank" rel="noopener">Website</a>
+              <a href="mailto:novin@sc.edu">Email</a>
+            </div>
+          </details>
+        </div>
+      </article>
 
-            <details class="member-more">
-              <summary>More</summary>
-
-              <p class="member-bio">
-                Souvick studies AI-driven information systems and how people interact with AI in library and learning
-                contexts. His work emphasizes human-centered approaches to designing and evaluating AI-supported services
-                and instruction. He advises on integrating AI literacy into library settings and supports the development
-                of curriculum assessment approaches.
-              </p>
-
-              <div class="member-links" aria-label="Member links">
-                <a href="https://souvickg.github.io" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:souvick.ghosh@sjsu.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
-
-        <!-- MEMBER CARD -->
-        <article class="member-card">
-          <div class="member-photo">
-            <img src="assets/images/novin_alamir2024.jpg" alt="Dr. Alamir Novin" />
-          </div>
-
-          <div class="member-body">
-            <h3 class="member-name">Dr. Alamir Novin</h3>
-            <p class="member-role">Assistant Professor</p>
-            <p class="member-inst">University of South Carolina</p>
-
-            <details class="member-more">
-              <summary>More</summary>
-
-              <p class="member-bio">
-                Alamir examines cognition, information behavior, and user experience in the ways people seek, interpret,
-                and apply information. His work helps translate behavioral insights into effective learning and system
-                design. He advises on learner-centered instructional strategies and how secondary students understand and interact with AI.
-              </p>
-
-              <div class="member-links" aria-label="Member links">
-                <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/novin_alamir.php" target="_blank" rel="noopener">Website</a>
-                <a href="mailto:novin@sc.edu">Email</a>
-              </div>
-            </details>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-funding">
-      <div class="footer-logos" aria-label="Funding logos">
-        <img class="footer-logo footer-logo--imls"
-             src="assets/images/imls_logo_2c.jpg"
-             alt="Institute of Museum and Library Services (IMLS) logo">
-
-        <img class="footer-logo"
-             src="assets/images/usc_logo_horizontal_RGB_G.png"
-             alt="University of South Carolina logo">
-
-        <img class="footer-logo"
-             src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
-             alt="USC College of Information and Communications logo">
-      </div>
-
-      <div class="footer-text">
-        Funded through the Laura Bush 21st Century Librarian Program
-      </div>
     </div>
   </div>
-</footer>
-
-<script>
-  // Mobile nav toggle
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.querySelector(".nav-toggle");
-    const nav = document.querySelector("#site-nav");
-    if (!btn || !nav) return;
-
-    const closeMenu = () => {
-      nav.classList.remove("is-open");
-      btn.classList.remove("is-open");
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", "Open menu");
-    };
-
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isOpen = nav.classList.toggle("is-open");
-      btn.classList.toggle("is-open", isOpen);
-      btn.setAttribute("aria-expanded", String(isOpen));
-      btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!nav.classList.contains("is-open")) return;
-      if (nav.contains(e.target) || btn.contains(e.target)) return;
-      closeMenu();
-    });
-
-    nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-  });
-
-  // Team cards: only one “More” open at a time + scroll opened card into view
-  document.addEventListener("DOMContentLoaded", () => {
-    const detailsList = [...document.querySelectorAll(".member-more")];
-
-    detailsList.forEach((d) => {
-      d.addEventListener("toggle", () => {
-        if (!d.open) return;
-
-        detailsList.forEach((other) => {
-          if (other !== d) other.open = false;
-        });
-
-        const card = d.closest(".member-card");
-        if (card) {
-          setTimeout(() => {
-            card.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 60);
-        }
-      });
-    });
-  });
-</script>
-
-</body>
-</html>
+</section>
