@@ -25,7 +25,6 @@ body{
   background:var(--page);
 }
 
-/* container widths */
 .container{
   width:min(1280px, 100% - 2.5rem);
   margin:0 auto;
@@ -191,10 +190,10 @@ header{
   object-fit:cover;
 }
 
-/* ===== Team (single section) ===== */
+/* ===== Team ===== */
 .team-wrap{ padding: 1.2rem 0 2.2rem; }
 
-/* 5 cards per row on desktop */
+/* 5 per row on desktop */
 .team-grid{
   display:grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -202,8 +201,6 @@ header{
   align-items: start;
   margin: 0;
 }
-
-/* responsive fallbacks */
 @media (max-width: 1200px){
   .team-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
@@ -228,7 +225,7 @@ header{
   flex-direction:column;
 
   width:100%;
-  max-width:none; /* IMPORTANT for 5-up grid */
+  max-width:none; /* critical for 5-up grid */
   align-self:start;
 }
 
@@ -361,7 +358,6 @@ header{
   color:#334155;
   text-align:center;
 }
-
 .footer-logos{
   display:flex;
   align-items:center;
@@ -369,18 +365,15 @@ header{
   gap: 1.25rem;
   flex-wrap: wrap;
 }
-
 .footer-logo{
   height: 64px;
   width: auto;
   display:block;
   object-fit:contain;
 }
-
 .footer-logo--imls{
   height: 90px;
 }
-
 .footer-text{
   font-size: 1.08rem;
   line-height: 1.35;
@@ -390,7 +383,6 @@ header{
 @media (max-width: 900px){
   .split-hero{grid-template-columns:1fr}
 
-  /* show + enlarge hamburger */
   .nav-toggle{
     display:inline-flex;
     align-items:center;
@@ -401,7 +393,6 @@ header{
     border-radius: 999px;
   }
 
-  /* bigger/thicker hamburger lines */
   .nav-toggle-icon,
   .nav-toggle-icon::before,
   .nav-toggle-icon::after{
@@ -411,20 +402,16 @@ header{
   .nav-toggle-icon::before{ top: -10px; }
   .nav-toggle-icon::after{ top: 10px; }
 
-  /* give brand area room so it doesn't crowd the hamburger */
   .brand{ max-width: calc(100% - 70px); }
 
-  /* subtitle wraps nicely on mobile */
   .brand-sub{
     max-width: 22ch;
     line-height: 1.15;
     text-wrap: balance;
   }
 
-  /* position dropdown relative to header */
   .header-inner{ position:relative; }
 
-  /* hide nav by default on mobile */
   .site-nav{
     display:none;
     position:absolute;
@@ -441,10 +428,8 @@ header{
     z-index: 50;
   }
 
-  /* show nav when open */
   .site-nav.is-open{ display:flex; }
 
-  /* bigger tap targets */
   .site-nav a{
     padding: .65rem .75rem;
     border-radius: 10px;
@@ -487,7 +472,6 @@ header{
       <span class="nav-toggle-icon" aria-hidden="true"></span>
     </button>
 
-    <!-- IMPORTANT: id + class must match CSS/JS -->
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
@@ -523,12 +507,12 @@ header{
     </div>
   </section>
 
-  <!-- Team (ALL members in one grid, no section titles) -->
+  <!-- Team (no sections; section titles shown inside each card under role) -->
   <section class="team-wrap" aria-label="Team members">
     <div class="container">
       <div class="team-grid">
 
-        <!-- Dr. Ehsan Mohammadi -->
+        <!-- Co-PIs -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/mohammadi.jpg" alt="Dr. Ehsan Mohammadi" />
@@ -536,6 +520,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Dr. Ehsan Mohammadi</h3>
             <p class="member-role">Associate Professor</p>
+            <p class="member-role">Co-PI</p>
             <p class="member-inst">University of South Carolina</p>
 
             <details class="member-more">
@@ -546,6 +531,7 @@ header{
                 people create, share, and use information online. He leads the project’s AI content to ensure concepts are
                 accurate, current, and accessible for school librarians.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://ehsanmohammadi.com" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:EHSAN2@sc.edu">Email</a>
@@ -554,7 +540,6 @@ header{
           </div>
         </article>
 
-        <!-- Dr. Jennifer Moore -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/moore_jennifer.jpg" alt="Dr. Jennifer Moore" />
@@ -562,6 +547,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Dr. Jennifer Moore</h3>
             <p class="member-role">Associate Professor</p>
+            <p class="member-role">Co-PI</p>
             <p class="member-inst">University of South Carolina</p>
 
             <details class="member-more">
@@ -572,6 +558,7 @@ header{
                 emerging literacies and support student learning. She leads the project’s research and curriculum
                 development to ensure materials are practical, adaptable, and aligned with secondary school library needs.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/moore_jennifer.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:JM328@mailbox.sc.edu">Email</a>
@@ -580,7 +567,7 @@ header{
           </div>
         </article>
 
-        <!-- Quynh Nguyen -->
+        <!-- Research Assistants -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/nguyen_quynh.jpg" alt="Quynh Nguyen" />
@@ -597,6 +584,7 @@ header{
                 address contemporary information challenges. She is excited to work on interdisciplinary projects
                 that connect people, data, and technological systems.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/nguyen_quynh.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:pnnguyen@email.sc.edu">Email</a>
@@ -605,7 +593,6 @@ header{
           </div>
         </article>
 
-        <!-- Samaneh Borji -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/borji_samaneh.jpg" alt="Samaneh Borji" />
@@ -622,6 +609,7 @@ header{
                 computer science and information science, with a focus on AI literacy, information literacy, and helping people
                 navigate mass information and avoid misleading content.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/borji_samaneh.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:sborji@email.sc.edu">Email</a>
@@ -630,7 +618,6 @@ header{
           </div>
         </article>
 
-        <!-- Amirreza Kalantari -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/kalantari_amirreza.jpg" alt="Amirreza Kalantari" />
@@ -647,6 +634,7 @@ header{
                 research interests include human centered AI, information behavior, and computational methods for studying
                 digital information spaces.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/academic_programs/phd/library_and_information_science_phd/phd_students/kalantari_amirreza.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:amirrezakalantari@sc.edu">Email</a>
@@ -655,7 +643,7 @@ header{
           </div>
         </article>
 
-        <!-- Jean Darnell -->
+        <!-- Advisory Board -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/darnell_jean.png" alt="Jean Darnell" />
@@ -663,6 +651,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Jean Darnell</h3>
             <p class="member-role">Director of Library Sciences</p>
+            <p class="member-role">Advisory Board</p>
             <p class="member-inst">School District of Philadelphia</p>
 
             <details class="member-more">
@@ -672,6 +661,7 @@ header{
                 around AI. Her work emphasizes practical guidance that helps educators and students navigate AI thoughtfully.
                 She advises on ethics-informed implementation and helps keep the curriculum relevant to real school library practice.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://www.awakenlibrarian.com" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:duchessofmycastl@gmail.com">Email</a>
@@ -680,7 +670,6 @@ header{
           </div>
         </article>
 
-        <!-- Elissa Malespina -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/malespina_elissa.jpeg" alt="Elissa Malespina" />
@@ -688,6 +677,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Elissa Malespina</h3>
             <p class="member-role">High School Librarian</p>
+            <p class="member-role">Advisory Board</p>
             <p class="member-inst">Union High School</p>
 
             <details class="member-more">
@@ -705,7 +695,6 @@ header{
           </div>
         </article>
 
-        <!-- Verity Olliff -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/olliff_verity.png" alt="Verity Olliff" />
@@ -713,6 +702,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Verity Olliff</h3>
             <p class="member-role">High School Librarian and Instructional Technology Coach</p>
+            <p class="member-role">Advisory Board</p>
             <p class="member-inst">Rio Mesa High School</p>
 
             <details class="member-more">
@@ -729,7 +719,7 @@ header{
           </div>
         </article>
 
-        <!-- Dr. Souvick Ghosh -->
+        <!-- Consultants -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/ghosh_souvick.jpg" alt="Dr. Souvick Ghosh" />
@@ -737,6 +727,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Dr. Souvick Ghosh</h3>
             <p class="member-role">Associate Professor</p>
+            <p class="member-role">Consultants</p>
             <p class="member-inst">San José State University</p>
 
             <details class="member-more">
@@ -747,6 +738,7 @@ header{
                 and instruction. He advises on integrating AI literacy into library settings and supports the development
                 of curriculum assessment approaches.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://souvickg.github.io" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:souvick.ghosh@sjsu.edu">Email</a>
@@ -755,7 +747,6 @@ header{
           </div>
         </article>
 
-        <!-- Dr. Alamir Novin -->
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/novin_alamir2024.jpg" alt="Dr. Alamir Novin" />
@@ -763,6 +754,7 @@ header{
           <div class="member-body">
             <h3 class="member-name">Dr. Alamir Novin</h3>
             <p class="member-role">Assistant Professor</p>
+            <p class="member-role">Consultants</p>
             <p class="member-inst">University of South Carolina</p>
 
             <details class="member-more">
@@ -772,6 +764,7 @@ header{
                 and apply information. His work helps translate behavioral insights into effective learning and system
                 design. He advises on learner-centered instructional strategies and how secondary students understand and interact with AI.
               </p>
+
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/novin_alamir.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:novin@sc.edu">Email</a>
@@ -795,10 +788,6 @@ header{
 
         <img class="footer-logo"
              src="assets/images/usc_logo_horizontal_RGB_G.png"
-             alt="University of South Carolina logo">
-
-        <img class="footer-logo"
-             src="assets/images/USC_CIC_logo_horizontal_RGB_2C.png"
              alt="University of South Carolina logo">
 
         <img class="footer-logo"
