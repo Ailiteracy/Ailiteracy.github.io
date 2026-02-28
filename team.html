@@ -193,24 +193,21 @@ header{
 /* ===== Team ===== */
 .team-wrap{ padding: 1.2rem 0 2.2rem; }
 
-/* 5 per row on desktop */
+/* 4 per row on desktop */
 .team-grid{
   display:grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   align-items: start;
   margin: 0;
 }
 @media (max-width: 1200px){
-  .team-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-@media (max-width: 960px){
   .team-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-@media (max-width: 640px){
+@media (max-width: 960px){
   .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 420px){
+@media (max-width: 640px){
   .team-grid{ grid-template-columns: 1fr; }
 }
 
@@ -771,6 +768,33 @@ header{
               <div class="member-links" aria-label="Member links">
                 <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/novin_alamir.php" target="_blank" rel="noopener">Website</a>
                 <a href="mailto:novin@sc.edu">Email</a>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <div class="member-photo">
+            <img src="assets/images/VCZR.jpg" alt="Dr. Viviana C. Zambrano Rodriguez" />
+          </div>
+          <div class="member-body">
+            <h3 class="member-name">Dr. Viviana C. Zambrano Rodriguez</h3>
+            <p class="member-role">Research Assistant Professor</p>
+            <p class="member-role">Consultant</p>
+            <p class="member-inst">University of South Carolina</p>
+
+            <details class="member-more">
+              <summary>More</summary>
+              <p class="member-bio">
+                Viviana focuses on health communication research and evidence-based messaging to strengthen public health and social impact
+                efforts. She studies how people make decisions that shape health outcomes and turn those insights into clear, practical communication 
+                strategies. She contributes to research and message development to ensure materials are culturally responsive, person-centered, and 
+                adaptable for diverse communities.
+              </p>
+
+              <div class="member-links" aria-label="Member links">
+                <a href="https://sc.edu/study/colleges_schools/cic/faculty-staff/zambrano_viviana.php" target="_blank" rel="noopener">Website</a>
+                <a href="mailto:vivianaz@mailbox.sc.edu">Email</a>
               </div>
             </details>
           </div>
